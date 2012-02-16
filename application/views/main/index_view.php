@@ -86,7 +86,6 @@
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.dialog.min.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/easing/jquery.easing.1.1.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/cufon.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/video.js"></script> 
 
 </head>
 
@@ -118,7 +117,7 @@
 					</iframe>
 					
 				
-					<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+					
 					
 					
 					<style>
@@ -126,7 +125,8 @@
 						width:640px;
 					}
 					</style>
-					
+<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/c/video.js"></script>
 					<div  id='video_container'>
 							<video id="my_video_1" class="video-js vjs-default-skin" controls
 							  preload="auto" width="640" height="400" poster="my_video_poster.png"
