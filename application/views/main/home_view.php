@@ -176,6 +176,9 @@
 					.accordion-group, .accordion-inner{
 					border:0px;	
 					}
+					#middle-vertical-line{
+						height: 429px;
+						border-left:3px solid gray;
 					</style>
 
 
@@ -245,8 +248,8 @@
 					    	
 					    </div>	
 					    
-					    <div class="span1" >
-					    	<div   style='height:700px;border-left:3px solid gray'  >
+					    <div  class="span1" >
+					    	<div  id='middle-vertical-line'  >
 					    	</div>
 					    </div>	
 					    
