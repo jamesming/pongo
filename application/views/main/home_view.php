@@ -230,7 +230,7 @@
 									                  	<?php for($i=1;$i<=mt_rand(1, 9);$i++ ){?>
 									                  	
 											                  	<li   style='cursor:pointer'  >
-											                  		Sample Show <?php echo $i    ?>
+											                  		Sample <?php echo $value    ?> Show <?php echo $i    ?>
 											                  	</li>
 									                  	
 									                  	<?php } ?>
