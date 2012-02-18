@@ -227,7 +227,7 @@
 									              <div id="collapse<?php echo $key    ?>" class="accordion-body collapse">
 									                <div class="accordion-inner">
 									                  <ol>
-									                  	<?php for($i=1;$i<=8;$i++ ){?>
+									                  	<?php for($i=1;$i<=mt_rand(1, 9);$i++ ){?>
 									                  	
 											                  	<li   style='cursor:pointer'  >
 											                  		Sample Show <?php echo $i    ?>
