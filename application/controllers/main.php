@@ -30,7 +30,26 @@ class Main extends CI_Controller {
 					array('data' => $data));	    
 	}
 	
+	/**
+	 * Index Page for this controller.
+	 * 
+	 * @package BackEnd
+	 * @author James Ming <jamesming@gmail.com>
+	 * @path /index.php/home/index
+	 * @access public
+	 */
+	 
 
+	public function home(){
+	
+
+		$data = array(
+		);
+		
+
+		$this->load->view('main/home_view',
+					array('data' => $data));	    
+	}
 
 /**
  * create_table

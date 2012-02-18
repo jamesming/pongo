@@ -129,7 +129,7 @@
 <script src="http://vjs.zencdn.net/c/video.js"></script>
 					<div  id='video_container'>
 							<video id="my_video_1" class="video-js vjs-default-skin" controls  
-							   width="640" height="400" poster="<?php  echo base_url()   ?>images/Pongo_Logo.png"
+							  preload="auto" width="640" height="400" poster="<?php  echo base_url()   ?>images/Pongo_Logo.png"
 							  data-setup="{}">
 							  <source src="<?php  echo base_url()   ?>images/pongo.mp4" type='video/mp4'>
 							</video>		
