@@ -154,6 +154,10 @@
           </div>
 
 					<style>
+					#left-spacer{
+					height:105px;
+					border:0px solid gray;
+					}
 					#work-label{
 					margin-bottom:10px;
 					}
@@ -185,7 +189,7 @@
 					    			<li>Client Page</li>	
 					    			<li>Login</li>	
 					    		</ul>
-					    		<hr   style='height:100px;border:0px solid gray'  />
+					    		<hr  id='left-spacer'  />
 					    		<ul class="unstyled">
 					    			<li>Pongo Address</li>	
 					    			<li>Contact Information</li>	
