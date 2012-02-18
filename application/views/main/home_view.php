@@ -161,7 +161,6 @@
 					#left-side-div li, #left-side-div a.accordion-toggle{
 				    color: gray;
 				    font-size: 19px;
-				    margin:0px 0px 0px 0px;
 				    margin-bottom: 11px;
 				    text-decoration:none;
 				    padding:0px 0px 0px 0px;
@@ -223,7 +222,7 @@
 									                  <ol>
 									                  	<?php for($i=1;$i<=8;$i++ ){?>
 									                  	
-											                  	<li>
+											                  	<li   style='cursor:pointer'  >
 											                  		Sample Show <?php echo $i    ?>
 											                  	</li>
 									                  	
@@ -243,7 +242,7 @@
 					    </div>	
 					    
 					    <div class="span1" >
-					    	<div   style='height:700px;border-right:3px solid gray'  >
+					    	<div   style='height:700px;border-left:3px solid gray'  >
 					    	</div>
 					    </div>	
 					    
@@ -261,11 +260,9 @@
 												
 												foreach( $arrays  as  $key => $value){?>
 												
-														  <li class="span2">
+														  <li class=" span2">
 														    <div class="thumbnail">
-														      <img src="http://placehold.it/160x120" alt="">
-														      <h5>Thumbnail <?php echo $value    ?></h5>
-														      <p>Thumbnail caption right here...</p>
+														      <img src="http://placehold.it/169x130" alt="">
 														    </div>
 														  </li>									
 														  
