@@ -25,8 +25,7 @@ class Ajax extends CI_Controller {
 	
 	public function assets(){
 		
-		$num = $this->uri->segment(3)
-		
+		$num = $this->uri->segment(3);
 		?>
 		
 											<ul class="thumbnails">
@@ -34,7 +33,7 @@ class Ajax extends CI_Controller {
 												
 												<?php 
 												
-												for($i=0; $i <= $num; $i++){
+												for($i=1; $i <= $num; $i++){
 													$arrays[]=$i;
 												}
 												
@@ -42,9 +41,10 @@ class Ajax extends CI_Controller {
 												
 												foreach( $arrays  as  $key => $value){?>
 												
-														  <li class="fancyZoom span2"    href='#fancyZoom_div'>
+														  <li class="fancyZoom span2"    href='#fancyZoom_div'  record='<?php echo $value    ?>'>
 														    <div class="thumbnail">
-														      <img src="http://placehold.it/169x130" alt="">
+														     <!-- <img src="http://placehold.it/169x130&text=<?php echo $label.' '.($value + 1);    ?>" alt="">-->
+														      <img src="http://placedog.com/169/130?random=<?php   echo rand(4,12312313)  ?>" alt="">
 														    </div>
 														  </li>									
 														  

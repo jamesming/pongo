@@ -34,6 +34,7 @@
     <style>
 
       body {
+  			//background: url(http://griddle.it/960-12-30) repeat-y center top;  
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
       .float_left{
@@ -226,7 +227,7 @@
 												$arrays= array(
 												'Animation',
 												'Cable',
-												'Children\'s',
+												'Childrens',
 												'Digital Content',
 												'Integrated Marketing',
 												'Network',
@@ -243,7 +244,7 @@
 									            <div class="accordion-group">
 									              <div class="accordion-heading">
 									
-									                <a class="accordion-toggle theList" howmany_entries=<?php echo $random    ?> data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
+									                <a label='<?php echo $value    ?>' class="accordion-toggle theList" howmany_entries=<?php echo $random    ?> data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
 									                  <?php echo $value    ?>
 									                </a>
 									              </div>
@@ -331,30 +332,22 @@
 								echo ( $this->tools->browserIsExplorer()  ? "'margin-top':'40px'" :"" );
 							?>
 					})
-					.attr('src','http://placehold.it/'+width+'x'+(height))
+					//..attr('src','http://placehold.it/'+width+'x'+(height))
+					//.attr('src','');
 		};
 
-		$('#fancyZoom_div').setFancyZoomWindowSize(500, 500)
+		$('#fancyZoom_div').setFancyZoomWindowSize(450, 500)
 		
-		function fancyzoom(){
-			
-		  	$('.fancyZoom').css({cursor:'pointer'}).fancyZoom().live("click", function(){
-				});					
-			
-		}
 		
 		$(document).ready(function() {
 			
-					$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/assets/2', function() {
-						$("#iframe_content_text").attr('src','<?php  echo base_url()   ?>index.php/main/add_asset');
-					  fancyzoom();	
-					});
-					
-					
 					$('.theList').click(function(event) {
-						$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/assets/' +  $(this).attr('howmany_entries'), function() {
-							$("#iframe_content_text").attr('src','<?php  echo base_url()   ?>index.php/main/add_asset');
-						  fancyzoom();	
+						$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/assets/' +  $(this).attr('howmany_entries')  + '?random='+Math.floor(Math.random()*11), function() {
+						  $('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+						  	$('#iframe_content_text').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset/'+$(this).attr('record'))
+						  });	
+						  
+						  
 						});
 					});	
 			

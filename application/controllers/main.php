@@ -50,7 +50,6 @@ class Main extends CI_Controller {
 					array('data' => $data));	    
 	}
 	
-	
 	public function add_asset(){
 
 		$input_array = array(
@@ -76,14 +75,16 @@ class Main extends CI_Controller {
 		);
 		
 		$data = array(
-			'input_array' =>  $input_array
+			'input_array' =>  $input_array,
+			'record' =>  $this->uri->segment(3)
 		);
 		
 		$this->load->view('main/add_asset_view',
 					array('data' => $data));			
 		
 
-	}
+	}	
+
 
 	public function generic(){
 	

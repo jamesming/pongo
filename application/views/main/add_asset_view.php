@@ -8,8 +8,6 @@
 
     <link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
 
-  
-    <link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
 
     <link rel="shortcut icon" href="<?php  echo base_url()   ?>bootstrap/ico/favicon.ico">
@@ -30,7 +28,7 @@
 		<div  class=' container' >
 			
 			<div>
-					<legend >Add Asset</legend>
+					<legend >Add Asset <?php echo $data['record']   ?></legend>
 			</div>
 			
 			
@@ -42,13 +40,8 @@
   </body> 
 
     <script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
-
-
 		<script type="text/javascript" language="Javascript">
-			$(document).ready(function() { 
-				
-					
-			});
+		
 		</script>
 	
 	
