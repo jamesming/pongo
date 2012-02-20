@@ -38,7 +38,6 @@ class Main extends CI_Controller {
 	 * @path /index.php/home/index
 	 * @access public
 	 */
-	 
 
 	public function home(){
 	
@@ -48,6 +47,52 @@ class Main extends CI_Controller {
 		
 
 		$this->load->view('main/home_view',
+					array('data' => $data));	    
+	}
+	
+	
+	public function add_asset(){
+
+		$input_array = array(
+			'size-class' => 'span3',
+			'inputs' => array(
+			
+				array('input_name'=>'project', 'type' => 'text', 'label' => 'Project', 'placeholder' => ''),
+				array('input_name'=>'description', 'type' => 'textarea', 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
+				array('input_name'=>'client', 'type' => 'text', 'label' => 'Client', 'placeholder' => ''),
+				array('input_name'=>'date', 'type' => 'text', 'label' => 'Date', 'placeholder' => ''),
+				array('input_name'=>'fileInput', 'type' => 'file', 'label' => 'File Input', 'placeholder' => ''),
+				array(
+						'input_name'=>'sports', 
+						'type' => 'select', 
+						'label' => 'Sports',
+						'options' => array(
+								array('value' => '1','text' => 'football'),
+								array('value' => '2','text' => 'soccer'),
+								array('value' => '3','text' => 'baseball'),
+						)
+				)
+			)
+		);
+		
+		$data = array(
+			'input_array' =>  $input_array
+		);
+		
+		$this->load->view('main/add_asset_view',
+					array('data' => $data));			
+		
+
+	}
+
+	public function generic(){
+	
+
+		$data = array(
+		);
+		
+
+		$this->load->view('main/generic_view',
 					array('data' => $data));	    
 	}
 

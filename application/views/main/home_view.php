@@ -47,7 +47,26 @@
 			}
 			.orange{
 			background:orange;	
-			}			
+			}		
+			.rounded{
+					border-top-left-radius: 6px;
+					border-top-right-radius: 6px;
+					-moz-border-radius-topleft: 6px;
+					-moz-border-radius-topright: 6px;
+					-webkit-border-top-right-radius: 6px;
+					-webkit-border-top-left-radius: 6px;
+					border-bottom-left-radius: 6px;
+					border-bottom-right-radius: 6px;
+					-moz-border-radius-bottomleft: 6px;
+					-moz-border-radius-bottomright: 6px;
+					-webkit-border-bottom-right-radius: 6px;
+					-webkit-border-bottom-left-radius: 6px;
+				}
+				.shadowed{
+				  -webkit-box-shadow: 0 0 12px #dbc59e;
+				  -moz-box-shadow: 0 0 6px #dbc59e;
+				  box-shadow: 0 0 6px #dbc59e;	
+				}				
     </style>
 
     <link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -267,7 +286,7 @@
 												
 												foreach( $arrays  as  $key => $value){?>
 												
-														  <li class=" span2">
+														  <li class="fancyZoom span2"    href='#fancyZoom_div'>
 														    <div class="thumbnail">
 														      <img src="http://placehold.it/169x130" alt="">
 														    </div>
@@ -284,7 +303,12 @@
 			    </div>
 
 
-
+					<div id="fancyZoom_div"  style='display:none;'  >
+						
+						<iframe   id="iframe_content_text" scrolling="no"  frameborder="0" src=""  >
+						    <p>Your browser does not support iframes.</p>
+						</iframe>
+					</div>	
 
 
     <!-- Le javascript
@@ -295,40 +319,48 @@
 
 
     <script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-transition.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-alert.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-modal.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-dropdown.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-scrollspy.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-tab.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-tooltip.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-popover.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-button.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-collapse.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-carousel.js"></script>
-
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-typeahead.js"></script>
 
-
+		<?php $this->load->view('footer/fancy_zoom.php');    ?>
+		
 	<script type="text/javascript" language="Javascript">
-		$(document).ready(function() { 
-			$('#theButton').click(function(event) {
-					$('#theMessage').show()	
-			});	
+		
+		$.fn.setFancyZoomWindowSize = function(width, height) {
+					$(this).css({width:width+'px',height:height+'px'})
+					.children('iframe').css({
+							width:width+'px',
+							height:height+'px',
+							<?php     
+								echo ( $this->tools->browserIsExplorer()  ? "'margin-top':'40px'" :"" );
+							?>
+					})
+					.attr('src','http://placehold.it/'+width+'x'+(height))
+		};
+							
+		$(document).ready(function() {
+			
+				$('#fancyZoom_div').setFancyZoomWindowSize(500, 500)
+			 
+		  	$('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+		  		
+		  		$("#iframe_content_text").attr('src','<?php  echo base_url()   ?>index.php/main/add_asset');
+					
+				});		
 				
 		});
 	</script>
+	
   </body>
 
 </html>
