@@ -336,7 +336,7 @@
 					//.attr('src','');
 		};
 
-		$('#fancyZoom_div').setFancyZoomWindowSize(450, 500)
+		$('#fancyZoom_div').setFancyZoomWindowSize(420, 470)
 		
 		
 		$(document).ready(function() {
