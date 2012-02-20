@@ -235,18 +235,22 @@
 												);
 												
 												foreach( $arrays  as  $key => $value){?>
+													
+															<?php     
+																$random = mt_rand(1, 9);
+															?>
 												
 									            <div class="accordion-group">
 									              <div class="accordion-heading">
 									
-									                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
+									                <a class="accordion-toggle theList" howmany_entries=<?php echo $random    ?> data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
 									                  <?php echo $value    ?>
 									                </a>
 									              </div>
 									              <div id="collapse<?php echo $key    ?>" class="accordion-body collapse">
 									                <div class="accordion-inner">
 									                  <ol>
-									                  	<?php for($i=1;$i<=mt_rand(1, 9);$i++ ){?>
+									                  	<?php for($i=1;$i<=$random;$i++ ){?>
 									                  	
 											                  	<li   style='cursor:pointer'  >
 											                  		Sample <?php echo $value    ?> Show <?php echo $i    ?>
@@ -273,29 +277,11 @@
 					    </div>	
 					    
 					    		    	    
-					    <div class="span6">
+					    <div  id='right-panel' class="span6">
 					    
 					    
 					    
-											<ul class="thumbnails">
-												
-												
-												<?php 
-												
-												$arrays= array(1,2,3,4,5,6,7,8,9);
-												
-												foreach( $arrays  as  $key => $value){?>
-												
-														  <li class="fancyZoom span2"    href='#fancyZoom_div'>
-														    <div class="thumbnail">
-														      <img src="http://placehold.it/169x130" alt="">
-														    </div>
-														  </li>									
-														  
-												<?php } ?>
-			
-			    
-											</ul>
+
 					    
 					    
 					    </div>
@@ -347,18 +333,33 @@
 					})
 					.attr('src','http://placehold.it/'+width+'x'+(height))
 		};
-							
+
+		$('#fancyZoom_div').setFancyZoomWindowSize(500, 500)
+		
+		function fancyzoom(){
+			
+		  	$('.fancyZoom').css({cursor:'pointer'}).fancyZoom().live("click", function(){
+				});					
+			
+		}
+		
 		$(document).ready(function() {
 			
-				$('#fancyZoom_div').setFancyZoomWindowSize(500, 500)
-			 
-		  	$('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
-		  		
-		  		$("#iframe_content_text").attr('src','<?php  echo base_url()   ?>index.php/main/add_asset');
+					$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/assets/2', function() {
+						$("#iframe_content_text").attr('src','<?php  echo base_url()   ?>index.php/main/add_asset');
+					  fancyzoom();	
+					});
 					
-				});		
-				
+					
+					$('.theList').click(function(event) {
+						$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/assets/' +  $(this).attr('howmany_entries'), function() {
+							$("#iframe_content_text").attr('src','<?php  echo base_url()   ?>index.php/main/add_asset');
+						  fancyzoom();	
+						});
+					});	
+			
 		});
+		
 	</script>
 	
   </body>

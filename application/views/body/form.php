@@ -78,6 +78,37 @@
 						          </div>
          					
          				<?php
+         				}elseif( $inputs['type'] == 'radio'){
+         				?>	
+         					
+					          <div class="control-group">
+					
+					            <label class="control-label">Radio buttons</label>
+					
+					            <div class="controls">
+					
+					              <label class="radio">
+					
+					                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+					
+					                Option one is this and that&mdash;be sure to include why it's great
+					
+					              </label>
+					
+					              <label class="radio">
+					
+					                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+					
+					                Option two can is something else and selecting it will deselect option one
+					
+					              </label>
+					
+					            </div>
+					
+					          </div>
+
+         					
+         				<?php
          				};
          			 
          } ?>
