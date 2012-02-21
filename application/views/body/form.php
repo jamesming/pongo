@@ -120,11 +120,17 @@
 							
 							      </div>
 							      
-						      	<div  class='clearfix '  >
-						      		<div   style='border:1px solid #CCCCCC;text-align:center; width:100px;height:100px;margin:2px auto'  >
-						      			image
-						      		</div>
-						      	</div>
+							      
+							      <?php if(  $inputs['thumbnailbox']== 1){?>
+							      
+									      	<div  class='clearfix '   style='margin-bottom:20px'   >
+									      		<div   style='border:1px solid #CCCCCC;text-align:center; width:<?php echo $inputs['thumbnailbox-size']['width']    ?>;height:<?php echo $inputs['thumbnailbox-size']['height']    ?>;margin:0 auto'  >
+									      			image
+									      		</div>
+									      	</div>							      
+							     
+							     	<?php } ?>
+
 							      
 								
 							<?php

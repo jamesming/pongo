@@ -300,7 +300,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 					})
 		};
 
-		$('#fancyZoom_div').setFancyZoomWindowSize(794, 450)
+		$('#fancyZoom_div').setFancyZoomWindowSize(794, 470)
 		
 		
 		$(document).ready(function() {
