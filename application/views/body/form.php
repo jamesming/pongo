@@ -1,4 +1,9 @@
-      <form  id='form0' class="form-horizontal">
+      <form  
+      	id='form0' 
+      	class="form-horizontal"
+ 				METHOD="POST" 
+ 				enctype="multipart/form-data"
+      >
 
         <fieldset>
 

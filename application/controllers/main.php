@@ -60,8 +60,8 @@ class Main extends CI_Controller {
 				array('input_name'=>'description', 'type' => 'textarea', 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
 				array('input_name'=>'client', 'type' => 'text', 'label' => 'Client', 'placeholder' => ''),
 				array('input_name'=>'date', 'type' => 'text', 'label' => 'Date', 'placeholder' => ''),
-				array('input_name'=>'fileInput', 'type' => 'file', 'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px')),
-				array('input_name'=>'fileInput', 'type' => 'file', 'label' => 'Select video mp4 file', 'thumbnailbox' => 0),
+				array('input_name'=>'fileImage', 'type' => 'file', 'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px')),
+				array('input_name'=>'fileVideo', 'type' => 'file', 'label' => 'Select video mp4 file', 'thumbnailbox' => 0),
 				array(
 						'input_name'=>'sports', 
 						'type' => 'select', 

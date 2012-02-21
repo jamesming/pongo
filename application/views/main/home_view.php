@@ -204,7 +204,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 												foreach( $arrays  as  $key => $value){?>
 													
 															<?php     
-																$random = mt_rand(1, 9);
+																$random = mt_rand(1, 15);
 															?>
 												
 									            <div class="accordion-group">
@@ -238,13 +238,13 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 					    	
 					    </div>	
 					    
-					    <div  class="span1" >
+					    <div  class="span1"  >
 					    	<div  id='middle-vertical-line'  >
 					    	</div>
 					    </div>	
 					    
-					    		    	    
-					    <div  id='right-panel' class="span6">
+
+					    <div  id='right-panel' class="span6" >
 					    
 					    
 					    
