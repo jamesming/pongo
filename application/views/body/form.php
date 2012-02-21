@@ -55,8 +55,7 @@
 						
 						            <div class="controls">
 						
-						              <textarea  id="<?php echo $inputs['input_name']    ?>" name="<?php echo $inputs['input_name']    ?>" class="<?php echo $data['input_array']['size-class']    ?> input_fields "rows="<?php echo $inputs['rows']    ?>" placeholder="<?php echo $inputs['placeholder']    ?>">
-						              </textarea>
+						              <textarea  id="<?php echo $inputs['input_name']    ?>" name="<?php echo $inputs['input_name']    ?>" class="<?php echo $data['input_array']['size-class']    ?> input_fields "rows="<?php echo $inputs['rows']    ?>" placeholder="<?php echo $inputs['placeholder']    ?>"></textarea>
 						
 						            </div>
 						
@@ -141,7 +140,7 @@
          
           <div class="form-actions clearfix"   style='padding-left:0px;'  >
 
-            <button  id='submit-button' type="submit" class="btn btn-primary"   >Save</button>
+            <button  id='submit-button' type="button" class="btn btn-primary"   >Save</button>
 
           </div>
           
