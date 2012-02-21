@@ -46,9 +46,23 @@ class Ajax extends CI_Controller {
 														     <!-- <img src="http://placehold.it/169x130&text=<?php echo $label.' '.($value + 1);    ?>" alt="">-->
 														      <img src="http://placedog.com/169/130?random=<?php   echo rand(4,12312313)  ?>" alt="">
 														    </div>
+														    <div>
+														    	test
+														    </div>
 														  </li>									
 														  
 												<?php } ?>
+			
+			
+											  <li class="fancyZoom span2"    href='#fancyZoom_div'  record='-1'>
+											    <div class="thumbnail">
+											     <!-- <img src="http://placehold.it/169x130&text=<?php echo $label.' '.($value + 1);    ?>" alt="">-->
+											      <img src="http://placehold.it/169x130" alt="">
+											    </div>
+											    <div>
+											    	New
+											    </div>
+											  </li>			 
 			
 			    
 											</ul>

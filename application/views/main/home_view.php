@@ -34,7 +34,7 @@
     <style>
 
       body {
-  			//background: url(http://griddle.it/960-12-30) repeat-y center top;  
+  			background: url(http://griddle.it/960-12-30) repeat-y center top;  
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
       .float_left{
@@ -332,11 +332,9 @@
 								echo ( $this->tools->browserIsExplorer()  ? "'margin-top':'40px'" :"" );
 							?>
 					})
-					//..attr('src','http://placehold.it/'+width+'x'+(height))
-					//.attr('src','');
 		};
 
-		$('#fancyZoom_div').setFancyZoomWindowSize(420, 470)
+		$('#fancyZoom_div').setFancyZoomWindowSize(420, 490)
 		
 		
 		$(document).ready(function() {
@@ -346,8 +344,6 @@
 						  $('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
 						  	$('#iframe_content_text').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset/'+$(this).attr('record'))
 						  });	
-						  
-						  
 						});
 					});	
 			
