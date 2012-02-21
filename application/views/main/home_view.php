@@ -31,44 +31,7 @@
 
     <link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
 
-    <style>
-
-      body {
-  			background: url(http://griddle.it/960-12-30) repeat-y center top;  
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-      .float_left{
-      float:left;	
-      }
-      .clearfix{
-      clear:both;	
-      }
-			.yellow{
-			background:yellow;	
-			}
-			.orange{
-			background:orange;	
-			}		
-			.rounded{
-					border-top-left-radius: 6px;
-					border-top-right-radius: 6px;
-					-moz-border-radius-topleft: 6px;
-					-moz-border-radius-topright: 6px;
-					-webkit-border-top-right-radius: 6px;
-					-webkit-border-top-left-radius: 6px;
-					border-bottom-left-radius: 6px;
-					border-bottom-right-radius: 6px;
-					-moz-border-radius-bottomleft: 6px;
-					-moz-border-radius-bottomright: 6px;
-					-webkit-border-bottom-right-radius: 6px;
-					-webkit-border-bottom-left-radius: 6px;
-				}
-				.shadowed{
-				  -webkit-box-shadow: 0 0 12px #dbc59e;
-				  -moz-box-shadow: 0 0 6px #dbc59e;
-				  box-shadow: 0 0 6px #dbc59e;	
-				}				
-    </style>
+		<?php $this->load->view('header/generic_css.php');    ?>
 
     <link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -86,8 +49,11 @@
 
   </head>
 
-
-
+<style>
+body{
+padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */	
+}
+</style>
   <body>
 
 
@@ -334,7 +300,7 @@
 					})
 		};
 
-		$('#fancyZoom_div').setFancyZoomWindowSize(420, 490)
+		$('#fancyZoom_div').setFancyZoomWindowSize(794, 450)
 		
 		
 		$(document).ready(function() {
@@ -346,7 +312,8 @@
 						  });	
 						});
 					});	
-			
+					
+					
 		});
 		
 	</script>

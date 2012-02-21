@@ -1,9 +1,9 @@
-      <form class="form-horizontal">
+      <form  id='form0' class="form-horizontal">
 
         <fieldset>
 
-
-         <?php foreach( $data['input_array']['inputs']  as  $inputs){ 
+					<div  class='span5  '   style='margin-left:0px'  >
+		         <?php foreach( $data['input_array']['inputs']  as  $inputs){ 
          
          
          				if( $inputs['type'] == 'text'){?>
@@ -50,28 +50,13 @@
 
 						          <div class="control-group">
 						
-						            <label class="control-label"  for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
+						            <label class="control-label"  for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?>
+						            </label>
 						
 						            <div class="controls">
 						
-						              <textarea  id="<?php echo $inputs['input_name']    ?>" name="<?php echo $inputs['input_name']    ?>" class="<?php echo $data['input_array']['size-class']    ?> input_fields "rows="<?php echo $inputs['rows']    ?>" placeholder="<?php echo $inputs['placeholder']    ?>"></textarea>
-						
-						            </div>
-						
-						          </div>
-         					
-         				<?php
-         				}elseif( $inputs['type'] == 'file'){
-         				?>	
-         					
-						
-						          <div class="control-group">
-						
-						            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
-						
-						            <div class="controls">
-						
-						              <input  id="<?php echo $inputs['input_name']    ?>   name="<?php echo $inputs['input_name']    ?> class="input-file input_fields" type="file">
+						              <textarea  id="<?php echo $inputs['input_name']    ?>" name="<?php echo $inputs['input_name']    ?>" class="<?php echo $data['input_array']['size-class']    ?> input_fields "rows="<?php echo $inputs['rows']    ?>" placeholder="<?php echo $inputs['placeholder']    ?>">
+						              </textarea>
 						
 						            </div>
 						
@@ -111,14 +96,54 @@
          				<?php
          				};
          			 
-         } ?>
-         
-         
-          <div class="form-actions">
+         			}?>
+					</div>
 
-            <button type="submit" class="btn btn-primary">Save changes</button>
+					<div  class='span5 '   style='margin-left:30px'  >
+						
+						<?php foreach( $data['input_array']['inputs']  as  $inputs){ 
+         
+         				if( $inputs['type'] == 'file'){
+							?>	
+								
+							
+							      <div class="control-group ">
+							      
+							
+							        <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
+							
+							        <div class="controls">
+							
+							          <input  id="<?php echo $inputs['input_name']    ?>   name="<?php echo $inputs['input_name']    ?> class="input-file input_fields" type="file">
+							
+							        </div>
+							
+							      </div>
+							      
+						      	<div  class='clearfix '  >
+						      		<div   style='border:1px solid #CCCCCC;text-align:center; width:100px;height:100px;margin:2px auto'  >
+						      			image
+						      		</div>
+						      	</div>
+							      
+								
+							<?php
+         				};
+         			 
+         		}?>
+					</div>
+         
+          <div class="form-actions clearfix"   style='padding-left:0px;'  >
+
+            <button  id='submit-button' type="submit" class="btn btn-primary"   >Save</button>
 
           </div>
+          
+          <script type="text/javascript" language="Javascript">
+          	$(document).ready(function() { 
+          		$('button#submit-button').css({position:'relative', left:($(window).width() / 2) - ($('button#submit-button').width()/2) })
+          	});
+          </script>
 
         </fieldset>
 
