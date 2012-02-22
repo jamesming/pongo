@@ -43,6 +43,7 @@ class Main extends CI_Controller {
 			'size-class' => 'span3',
 			'inputs' => array(
 			
+				array('input_name'=>'project_id', 'type' => 'hidden', 'value' => 'test'.$project_id),
 				array('input_name'=>'project', 'type' => 'text', 'label' => 'Project', 'placeholder' => ''),
 				array('input_name'=>'description', 'type' => 'textarea', 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
 				array('input_name'=>'client', 'type' => 'text', 'label' => 'Client', 'placeholder' => ''),

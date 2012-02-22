@@ -49,6 +49,12 @@
 						          </div>
          					
          				<?php
+         				}elseif( $inputs['type'] == 'hiddenX'){
+         				?>	
+         					
+						          <input id='<?php echo $inputs['input_name']    ?>' name="<?php echo $inputs['input_name']    ?>" type="text" class=" input_fields ' value="<?php echo $inputs['value']    ?>" >
+         					
+         				<?php
          				}elseif( $inputs['type'] == 'textarea'){
          				?>	
          					

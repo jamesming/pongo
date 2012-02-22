@@ -27,7 +27,7 @@
 
 
 			<div  >
-					<legend >Add a Project to <?php echo $data['legend']   ?></legend>
+					<legend >Add Project to <?php echo $data['legend']   ?></legend>
 			</div>
 			
 			
