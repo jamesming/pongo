@@ -26,7 +26,7 @@ class Main extends CI_Controller {
 		);
 		
 
-		$this->load->view('main/index_view',
+		$this->load->view('main/home_view',
 					array('data' => $data));	    
 	}
 	
@@ -53,6 +53,7 @@ class Main extends CI_Controller {
 	public function add_asset(){
 
 		$input_array = array(
+			'action' => 'index.php/ajax/update_asset',
 			'size-class' => 'span3',
 			'inputs' => array(
 			
@@ -110,15 +111,13 @@ class Main extends CI_Controller {
 
 	
 function t(){
-$table = 'images';
+$table = 'project_types';
 $this->my_database_model->create_generic_table($table );
 
 
 $fields_array = array(
-                      'user_id' => array(
-                                               'type' => 'int(11)'
-                                    ),
-                      'image_type_id' => array(
+
+                      'name' => array(
                                                'type' => 'int(11)'
                                     ),
 //                      'county' => array(
@@ -131,8 +130,26 @@ $fields_array = array(
 //                                               'type' => 'varchar(255)'
 //                                    )
               ); 
+              echo '<pre>';print_r(  $fields_array    );echo '</pre>'; 
               
+$this->my_database_model->add_column_to_table_if_exist(
+	$table, 
+	$fields_array
+);              
               
+$table = 'assets';
+$this->my_database_model->create_generic_table($table );
+
+
+$fields_array = array(
+
+                      'project_id' => array(
+                                               'type' => 'int(11)'
+                                    ),
+                      'asset_type_id' => array(
+                                               'type' => 'int(11)'
+                                    ),
+              );               
               
 $this->my_database_model->add_column_to_table_if_exist(
 	$table, 
