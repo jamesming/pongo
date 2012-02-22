@@ -65,16 +65,6 @@ class Ajax extends CI_Controller {
 
 
 	public function assets(){
-				
-		/*
-								$this->my_database_model->delete_from_table(
-										$table = 'assets', 
-										$where_array = array(
-																						'updated' => '0000-00-00 00:00:00' 
-																				)
-									);
-		
-		*/		
 
 	}
 }

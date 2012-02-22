@@ -34,6 +34,10 @@ class Main extends CI_Controller {
 	
 	public function add_asset(){
 		
+		$this->query->clear_table_of_empty_records_flagged_with_update_field_equals_0000( $table  = 'projects'); 
+		
+		$project_id = ( $this->input->get('project_id') == -1  ? $this->my_database_model->insert_table( $table = 'projects', $insert_what = array() ) : $this->input->get('project_id') );
+
 		$input_array = array(
 			'action' => 'index.php/ajax/update_asset',
 			'size-class' => 'span3',

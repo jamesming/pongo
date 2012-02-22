@@ -57,6 +57,18 @@ class Query {
 	}
 	
 	
+	function clear_table_of_empty_records_flagged_with_update_field_equals_0000( $table ){
+		
+			$this->CI->my_database_model->delete_from_table(
+			$table, 
+			$where_array = array(
+															'updated' => '0000-00-00 00:00:00' 
+													)
+			);
+		
+	}
+
+	
 	function get_users( $table, $where_array ){
 		
 
