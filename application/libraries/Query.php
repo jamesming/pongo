@@ -24,7 +24,39 @@ class Query {
 		$this->CI =& get_instance();	
 		
 	}
-
+	
+	
+	function get_categories(){
+			
+		return $this->CI->tools->object_to_array(
+				$this->CI->my_database_model->select_from_table( 
+					$table = 'categories', 
+					$select_what = '*',    
+					$where_array = array(), 
+					$use_order = FALSE, 
+					$order_field = 'created', 
+					$order_direction = 'asc', 
+					$limit = -1
+					));
+	}
+	
+	function get_projects( $category_id ){
+			
+		return $this->CI->tools->object_to_array(
+			$this->CI->my_database_model->select_from_table( 
+				$table = 'projects', 
+				$select_what = '*',    
+				$where_array = array(
+					'category_id' => $category_id
+				), 
+				$use_order = FALSE, 
+				$order_field = 'created', 
+				$order_direction = 'asc', 
+				$limit = -1
+				));
+	}
+	
+	
 	function get_users( $table, $where_array ){
 		
 
@@ -43,7 +75,6 @@ class Query {
 			$use_join = TRUE, 
 			$join_array
 			);
-			
 		$users_raw = $this->CI->tools->object_to_array($users_raw);
 
 

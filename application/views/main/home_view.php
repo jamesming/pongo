@@ -169,7 +169,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 
 
 			    <div  id='left-side-div' class="container">
-			    	<h1  id='work-label'>Work</h1>
+			    	<h1  id='work-label'>Work  <a  id='test' class='btn'   href='#jcrop_fancyZoom_div'  >launch</a></h1>
 				    <div class="row">
 					    <div class="span2">
 					    	
@@ -190,18 +190,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			         <div class="accordion" id="accordion2">
 												<?php 
 												
-												$arrays= array(
-												'Animation',
-												'Cable',
-												'Childrens',
-												'Digital Content',
-												'Integrated Marketing',
-												'Network',
-												'Shoot Spots',
-												'Sizzles Presentation',
-												);
-												
-												foreach( $arrays  as  $key => $value){?>
+												foreach( $data['categories']  as  $key => $category){?>
 													
 															<?php     
 																$random = mt_rand(1, 15);
@@ -210,8 +199,8 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									            <div class="accordion-group">
 									              <div class="accordion-heading">
 									
-									                <a label='<?php echo $value    ?>' class="accordion-toggle theList" howmany_entries=<?php echo $random    ?> data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
-									                  <?php echo $value    ?>
+									                <a category_id='<?php echo $category['id']    ?>' legend='<?php echo $category['name']    ?>' class="accordion-toggle theList" howmany_entries=<?php echo $random    ?> data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
+									                  <?php echo $category['name']    ?>
 									                </a>
 									              </div>
 									              <div id="collapse<?php echo $key    ?>" class="accordion-body collapse">
@@ -220,7 +209,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									                  	<?php for($i=1;$i<=$random;$i++ ){?>
 									                  	
 											                  	<li   style='cursor:pointer'  >
-											                  		Sample <?php echo $value    ?> Show <?php echo $i    ?>
+											                  		 <?php echo $category['name']    ?> Show <?php echo $i    ?>
 											                  	</li>
 									                  	
 									                  	<?php } ?>
@@ -258,18 +247,21 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 
 					<div id="fancyZoom_div"  style='display:none;'  >
 						
-						<iframe   id="iframe_content_text" scrolling="no"  frameborder="0" src=""  >
+						<iframe   id="iframe_fancyZoom_div" scrolling="no"  frameborder="0" src=""  >
 						    <p>Your browser does not support iframes.</p>
 						</iframe>
 					</div>	
 
+					<div id="jcrop_fancyZoom_div"  style='display:none;'  >
+						
+						<iframe   id="iframe_jcrop_fancyZoom_div" scrolling="no"  frameborder="0" src=""  >
+						    <p>Your browser does not support iframes.</p>
+						</iframe>
+					</div>	
 
-    <!-- Le javascript
+  </body>
 
-    ================================================== -->
-
-    <!-- Placed at the end of the document so the pages load faster -->
-
+</html>
 
     <script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
     <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-transition.js"></script>
@@ -287,38 +279,37 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 
 		<?php $this->load->view('footer/fancy_zoom.php');    ?>
 		
-	<script type="text/javascript" language="Javascript">
-		
-		$.fn.setFancyZoomWindowSize = function(width, height) {
-					$(this).css({width:width+'px',height:height+'px'})
-					.children('iframe').css({
-							width:width+'px',
-							height:height+'px',
-							<?php     
-								echo ( $this->tools->browserIsExplorer()  ? "'margin-top':'40px'" :"" );
-							?>
-					})
-		};
-
-		$('#fancyZoom_div').setFancyZoomWindowSize(794, 470)
-		
-		
-		$(document).ready(function() {
+		<script type="text/javascript" language="Javascript">
 			
-					$('.theList').click(function(event) {
-						$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/assets/' +  $(this).attr('howmany_entries')  + '?random='+Math.floor(Math.random()*11), function() {
-						  $('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
-						  	$('#iframe_content_text').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset/'+$(this).attr('record'))
-						  });	
-						});
-					});	
-					
-					
-		});
-		
-	</script>
+			$.fn.setFancyZoomWindowSize = function(width, height) {
+						$(this).css({width:width+'px',height:height+'px'})
+						.children('iframe').css({
+								width:width+'px',
+								height:height+'px',
+								<?php     
+									echo ( $this->tools->browserIsExplorer()  ? "'margin-top':'40px'" :"" );
+								?>
+						})
+			};
 	
-  </body>
-
-</html>
-
+			$('#fancyZoom_div').setFancyZoomWindowSize(794, 470);
+			$('#jcrop_fancyZoom_div').setFancyZoomWindowSize( $(window).width()-100, $(window).height()-200  );
+			
+			
+			$(document).ready(function() {
+				
+						$('.theList').click(function(event) {
+							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random='+Math.floor(Math.random()*11), function() {
+							  $('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+							  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?legend='+ $(this).attr('legend') )
+							  });	
+							});
+						});	
+						
+						$('#test').fancyZoom()
+						
+						
+			});
+			
+		</script>
+	

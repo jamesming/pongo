@@ -20,38 +20,20 @@ class Main extends CI_Controller {
 	 
 
 	public function index(){
-	
+		
+		$categories = $this->query->get_categories();
 
 		$data = array(
+			'categories' => $categories
 		);
-		
 
 		$this->load->view('main/home_view',
 					array('data' => $data));	    
 	}
-	
-	/**
-	 * Index Page for this controller.
-	 * 
-	 * @package BackEnd
-	 * @author James Ming <jamesming@gmail.com>
-	 * @path /index.php/home/index
-	 * @access public
-	 */
 
-	public function home(){
-	
-
-		$data = array(
-		);
-		
-
-		$this->load->view('main/home_view',
-					array('data' => $data));	    
-	}
 	
 	public function add_asset(){
-
+		
 		$input_array = array(
 			'action' => 'index.php/ajax/update_asset',
 			'size-class' => 'span3',
@@ -78,7 +60,7 @@ class Main extends CI_Controller {
 		
 		$data = array(
 			'input_array' =>  $input_array,
-			'record' =>  $this->uri->segment(3)
+			'legend' =>   $this->input->get('legend')
 		);
 		
 		$this->load->view('main/add_asset_view',

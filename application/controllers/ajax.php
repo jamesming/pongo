@@ -23,42 +23,26 @@ class Ajax extends CI_Controller {
 	
 	
 	
-	public function assets(){
-		
-		
-/*
-						$this->my_database_model->delete_from_table(
-								$table = 'assets', 
-								$where_array = array(
-																				'updated' => '0000-00-00 00:00:00' 
-																		)
-							);
+	public function projects(){
 
-*/
+		$legend = $this->input->get('legend');
 		
+		$category_id = $this->uri->segment(3);
 		
+		$projects = $this->query->get_projects( $category_id );
 		
-		$num = $this->uri->segment(3);
 		?>
-		
 											<ul class="thumbnails">
-												
 												
 												<?php 
 												
-												for($i=1; $i <= $num; $i++){
-													$arrays[]=$i;
-												}
+												foreach( $projects  as  $key => $project){?>
 												
-												//$arrays= array(1,2,3,4,5,6,7,8,9);
-												
-												foreach( $arrays  as  $key => $value){?>
-												
-														  <li class="fancyZoom span2"    href='#fancyZoom_div'  record='<?php echo $value    ?>'>
+														  <li class="fancyZoom span2"    href='#fancyZoom_div'  project_id='<?php echo $project['id']    ?>' category_id='<?php echo $category_id    ?>'>
 														    <div class="thumbnail">
-														    	<!--<div   style='text-align:center;border:1px solid gray;height:120px'  ><?php echo ($value );    ?>
+														    	<!--<div   style='text-align:center;border:1px solid gray;height:120px'  ><?php echo ($project );    ?>
 														    	</div>
-														      <img src="http://placehold.it/169x130&text=<?php echo $label.' '.($value + 1);    ?>" alt="">-->
+														      <img src="http://placehold.it/169x130&text=<?php echo $label.' '.($project + 1);    ?>" alt="">-->
 														      <img src="http://placedog.com/169/130?random=<?php   echo rand(4,12312313)  ?>" alt="">
 														    </div>
 														   
@@ -66,16 +50,12 @@ class Ajax extends CI_Controller {
 														  
 												<?php } ?>
 			
-			
-											  <li class="fancyZoom span2"    href='#fancyZoom_div'  record='-1'>
+											  <li class="fancyZoom span2"    href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
 											    <div class="thumbnail">
 											    	<div   style='text-align:center;border:1px solid gray;height:120px'  >NEW
 														</div>
-											     <!-- <img src="http://placehold.it/169x130&text=<?php echo $label.' '.($value + 1);    ?>" alt="">
-											      <img src="http://placehold.it/169x130" alt="">-->
 											    </div>
 											  </li>			 
-			
 			    
 											</ul>
 		
@@ -84,6 +64,19 @@ class Ajax extends CI_Controller {
 	}
 
 
+	public function assets(){
+				
+		/*
+								$this->my_database_model->delete_from_table(
+										$table = 'assets', 
+										$where_array = array(
+																						'updated' => '0000-00-00 00:00:00' 
+																				)
+									);
+		
+		*/		
+
+	}
 }
 
 /* End of file welcome.php */

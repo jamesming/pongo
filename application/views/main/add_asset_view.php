@@ -27,7 +27,7 @@
 
 
 			<div  >
-					<legend >Add Asset <?php echo $data['record']   ?></legend>
+					<legend >Add a Project to <?php echo $data['legend']   ?></legend>
 			</div>
 			
 			
@@ -40,7 +40,10 @@
 		<script type="text/javascript" language="Javascript">
 			
 			$('#submit-button').click(function(event) {
-				alert($('#form0').serialize());
+				window.parent.$('#iframe_jcrop_fancyZoom_div').attr('src', 'http://www.ebay.com')
+				window.parent.$('#test').click()
+				
+				//alert($('#form0').serialize());
 			});	
 		
 		</script>
