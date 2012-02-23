@@ -203,6 +203,7 @@ function update_table( $table, $primary_key, $set_what_array ){
 
 function update_table_where( $table, $where_array, $set_what_array ){
 
+
 	if( count($where_array) > 0 ){
 		
 		foreach( $where_array as $field => $value ){
@@ -215,7 +216,7 @@ function update_table_where( $table, $where_array, $set_what_array ){
 	
 	$this->db->update($table, $set_what_array); 
 	
-	return 'updated: ' . date('Y-m-d H:i:s');
+	return 'updated : ' . date('Y-m-d H:i:s');
 	
 }
 

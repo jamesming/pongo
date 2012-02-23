@@ -1,3 +1,11 @@
+
+			<div  >
+					<legend >Add Project to <?php echo $data['legend']   ?></legend>
+			</div>
+
+			<script src="<?php echo  base_url();   ?>js/fileuploader.js"></script>
+
+
       <form  
       	id='form0' 
       	class="form-horizontal"
@@ -19,12 +27,19 @@
 						
 						            <div class="controls">
 						
-						              <input id='<?php echo $inputs['input_name']    ?>' name="<?php echo $inputs['input_name']    ?>" type="text" class="<?php echo $data['input_array']['size-class']    ?> input_fields '  type="" value=""  placeholder="<?php echo $inputs['placeholder']    ?>">
+						              <input id='<?php echo $inputs['input_name']    ?>' name="<?php echo $inputs['input_name']    ?>" type="text" class="<?php echo $data['input_array']['size-class']    ?> input_fields "  value="<?php echo ( isset( $inputs['value'] ) ? $inputs['value']:'' )    ?>"  placeholder="<?php echo $inputs['placeholder']    ?>">
 						
 						            </div>
 						
 						          </div>										         				
          				
+         				<?php
+         				}elseif( $inputs['type'] == 'hidden'){
+         				?>	
+
+						              <input id='<?php echo $inputs['input_name']    ?>' name="<?php echo $inputs['input_name']    ?>" type="hidden" class="<?php echo $data['input_array']['size-class']    ?> input_fields "  value="<?php echo ( isset( $inputs['value'] ) ? $inputs['value']:'' )    ?>"  placeholder="<?php echo $inputs['placeholder']    ?>">
+		
+         					
          				<?php
          				}elseif( $inputs['type'] == 'select'){
          				?>	
@@ -39,7 +54,13 @@
 						              	
 						              						<?php foreach( $inputs['options']  as  $option){ ?>	
 						              							
-																									<option value="<?php echo $option['value']    ?>"><?php echo $option['text']    ?></option>
+																									<option <?php     
+																										
+																										if( $option['selected'] == 1){?>
+																											selected
+																										<?php  
+																										   	
+																										}?>value="<?php echo $option['value']    ?>"><?php echo $option['text']    ?></option>
 																									
 																			<?php } ?>	
 						              </select>
@@ -47,12 +68,6 @@
 						            </div>
 						
 						          </div>
-         					
-         				<?php
-         				}elseif( $inputs['type'] == 'hiddenX'){
-         				?>	
-         					
-						          <input id='<?php echo $inputs['input_name']    ?>' name="<?php echo $inputs['input_name']    ?>" type="text" class=" input_fields ' value="<?php echo $inputs['value']    ?>" >
          					
          				<?php
          				}elseif( $inputs['type'] == 'textarea'){
@@ -66,7 +81,7 @@
 						
 						            <div class="controls">
 						
-						              <textarea  id="<?php echo $inputs['input_name']    ?>" name="<?php echo $inputs['input_name']    ?>" class="<?php echo $data['input_array']['size-class']    ?> input_fields "rows="<?php echo $inputs['rows']    ?>" placeholder="<?php echo $inputs['placeholder']    ?>"></textarea>
+						              <textarea  id="<?php echo $inputs['input_name']    ?>" name="<?php echo $inputs['input_name']    ?>" class="<?php echo $data['input_array']['size-class']    ?> input_fields " rows="<?php echo $inputs['rows']    ?>" placeholder="<?php echo $inputs['placeholder']    ?>"><?php echo ( isset( $inputs['value'] ) ? $inputs['value']:'' )    ?></textarea>
 						
 						            </div>
 						
@@ -124,17 +139,39 @@
 							
 							        <div class="controls">
 							
-							          <input  id="<?php echo $inputs['input_name']    ?>   name="<?php echo $inputs['input_name']    ?> class="input-file input_fields" type="file">
-							
+												<div id="<?php  echo $inputs['fileuploader_name']   ?>"   class='btn float_right'    />	</div>
+													<!-- STYLE ICON IN BUTTON USING js/fileuploader.js line 511  -->
 							        </div>
 							
 							      </div>
 							      
+							      <script type="text/javascript" language="Javascript">
+							      
+								      $(document).ready(function() { 
+								      	
+								      			            window.<?php  echo $inputs['fileuploader_name']   ?> = new qq.FileUploader({
+													                element: document.getElementById('<?php  echo $inputs['fileuploader_name']   ?>'),
+													                action: '<?php echo base_url();    ?>index.php/ajax/upload',
+													                params: {
+																			        asset_id: <?php echo $inputs['asset_id']    ?>,
+																			        asset_type_id: <?php echo $inputs['asset_type_id']    ?>,
+																			        project_id:<?php echo $inputs['project_id']    ?>
+																			    },
+													                onComplete: function(id, fileName, responseJSON){
+													                	$('#iframe_dom').attr('src','<?php echo base_url()    ?>index.php/ajax/resize?asset_id='  + responseJSON['asset_id'] +  '&asset_type_id=' + responseJSON['asset_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
+													                },
+													                debug: true,
+																					multiple: false
+													            }); 
+								      
+								      });
+							      
+							      </script>
 							      
 							      <?php if(  $inputs['thumbnailbox']== 1){?>
 							      
 									      	<div  class='clearfix '   style='margin-bottom:20px'   >
-									      		<div   style='border:1px solid #CCCCCC;text-align:center; width:<?php echo $inputs['thumbnailbox-size']['width']    ?>;height:<?php echo $inputs['thumbnailbox-size']['height']    ?>;margin:0 auto'  >
+									      		<div  id='thumbnail'  style='border:1px solid #CCCCCC;text-align:center; width:<?php echo $inputs['thumbnailbox-size']['width']    ?>;height:<?php echo $inputs['thumbnailbox-size']['height']    ?>;margin:0 auto'  >
 									      			image
 									      		</div>
 									      	</div>							      
@@ -157,10 +194,41 @@
           
           <script type="text/javascript" language="Javascript">
           	$(document).ready(function() { 
-          		$('button#submit-button').css({position:'relative', left:($(window).width() / 2) - ($('button#submit-button').width()/2) })
+          		
+          		
+          		
+          		
+          		$('button#submit-button')
+          			.css({position:'relative', left:($(window).width() / 2) - ($('button#submit-button').width()/2) })
+          			.click(function(event) {
+												
+												$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
+												table:'<?php echo $data['input_array']['table']    ?>',
+												id:'<?php echo $data['input_array']['primary_key']    ?>',
+												set_what:$('#form0').serialize()
+												},function(data) {
+															alert(data);
+												});	
+				
+								});	
+								
+          			
           	});
           </script>
 
         </fieldset>
 
       </form>
+      
+	<iframe  
+		id="iframe_dom"   
+		name="iframe_dom"
+		style='background:white;
+		border:0px solid gray;width:0px;height:0px'  
+		border="0" 
+		frameborder="0" 
+		scrolling="auto" 
+		align="center" 
+		hspace="0" 
+		vspace="">
+	</iframe>      

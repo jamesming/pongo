@@ -26,9 +26,6 @@
   <body>
 
 
-			<div  >
-					<legend >Add Project to <?php echo $data['legend']   ?></legend>
-			</div>
 			
 			
 			<?php $this->load->view('body/form.php');    ?>
@@ -36,19 +33,6 @@
 
   </body> 
 
-    
-		<script type="text/javascript" language="Javascript">
-			
-			$('#submit-button').click(function(event) {
-				window.parent.$('#iframe_jcrop_fancyZoom_div').attr('src', 'http://www.ebay.com')
-				window.parent.$('#test').click()
-				
-				//alert($('#form0').serialize());
-			});	
-		
-		</script>
-	
-	
 	
   </body>
 

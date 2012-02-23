@@ -33,31 +33,52 @@ class Main extends CI_Controller {
 
 	
 	public function add_asset(){
-		
-		$this->query->clear_table_of_empty_records_flagged_with_update_field_equals_0000( $table  = 'projects'); 
-		
-		$project_id = ( $this->input->get('project_id') == -1  ? $this->my_database_model->insert_table( $table = 'projects', $insert_what = array() ) : $this->input->get('project_id') );
 
+		if( $this->input->get('project_id') == -1 ){
+			$project_id = $this->my_database_model->insert_table( $table = 'projects', $insert_what = array() );
+		}else{
+			$projects =   $this->tools->object_to_array( $this->my_database_model->select_from_table( 
+			$table = 'projects', 
+			$select_what = '*',    
+			$where_array = array(
+				'id' => $this->input->get('project_id')
+			), 
+			$use_order = TRUE, 
+			$order_field = 'created', 
+			$order_direction = 'desc', 
+			$limit = -1, 
+			$use_join = FALSE, 
+			$join_array = array()
+			));
+			
+			$project_id = $projects[0]['id'];
+			
+		};
+
+		$category_id = $this->input->get('category_id');
+		
 		$input_array = array(
 			'action' => 'index.php/ajax/update_asset',
 			'size-class' => 'span3',
+			'table' => 'projects',
+			'primary_key' => $project_id,
 			'inputs' => array(
 			
-				array('input_name'=>'project_id', 'type' => 'hidden', 'value' => 'test'.$project_id),
-				array('input_name'=>'project', 'type' => 'text', 'label' => 'Project', 'placeholder' => ''),
-				array('input_name'=>'description', 'type' => 'textarea', 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
-				array('input_name'=>'client', 'type' => 'text', 'label' => 'Client', 'placeholder' => ''),
-				array('input_name'=>'date', 'type' => 'text', 'label' => 'Date', 'placeholder' => ''),
-				array('input_name'=>'fileImage', 'type' => 'file', 'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px')),
-				array('input_name'=>'fileVideo', 'type' => 'file', 'label' => 'Select video mp4 file', 'thumbnailbox' => 0),
+				array('input_name'=>'category_id', 'type' => 'hidden', 'value' => $category_id, 'label' => '', 'placeholder' => ''),
+				array('input_name'=>'name', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['name'] :'' ), 'label' => 'Project', 'placeholder' => 'type in project name'),
+				array('input_name'=>'description', 'type' => 'textarea', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['description'] :'' ), 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
+				array('input_name'=>'client', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['client'] :'' ), 'label' => 'Client', 'placeholder' => ''),
+				array('input_name'=>'date', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['date'] :'' ), 'label' => 'Date', 'placeholder' => ''),
+				array('input_name'=>'fileImage', 'type' => 'file', 'project_id' => $project_id, 'asset_id' => '-1', 'asset_type_id' => '1', 'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'fileuploader_name' => 'upload_button_video_still', 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px')),
+				array('input_name'=>'fileVideo', 'type' => 'file', 'project_id' => $project_id, 'asset_id' => '-1', 'asset_type_id' => '2', 'label' => 'Select video mp4 file', 'thumbnailbox' => 0, 'fileuploader_name' => 'upload_button_video'),
 				array(
 						'input_name'=>'sports', 
 						'type' => 'select', 
 						'label' => 'Sports',
 						'options' => array(
-								array('value' => '1','text' => 'football'),
-								array('value' => '2','text' => 'soccer'),
-								array('value' => '3','text' => 'baseball'),
+								array('value' => '1','text' => 'football', 'selected' => ( isset( $projects[0]['name']) && $projects[0]['sports'] == 1  ? 1:'0')),
+								array('value' => '2','text' => 'soccer', 'selected' => ( isset( $projects[0]['name']) && $projects[0]['sports'] == 2  ? 1:'0')),
+								array('value' => '3','text' => 'baseball', 'selected' => ( isset( $projects[0]['name']) && $projects[0]['sports'] == 3  ? 1:'0')),
 						)
 				)
 			)
@@ -73,6 +94,14 @@ class Main extends CI_Controller {
 		
 
 	}	
+
+
+	public function update(){
+
+		echo  $this->query->update( $this->input->post()  );
+		
+	}
+
 
 
 	public function generic(){
