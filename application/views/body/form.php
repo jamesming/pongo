@@ -171,7 +171,20 @@
 							      <?php if(  $inputs['thumbnailbox']== 1){?>
 							      
 									      	<div  class='clearfix '   style='margin-bottom:20px'   >
-									      		<div  id='thumbnail'  style='border:1px solid #CCCCCC;text-align:center; width:<?php echo $inputs['thumbnailbox-size']['width']    ?>;height:<?php echo $inputs['thumbnailbox-size']['height']    ?>;margin:0 auto'  >
+									      		<div  id='thumbnail'  style='
+									      			border:1px solid #CCCCCC;
+									      			text-align:center; 
+									      			width:<?php echo $inputs['thumbnailbox-size']['width']    ?>;
+									      			height:<?php echo $inputs['thumbnailbox-size']['height']    ?>;
+									      			margin:0 auto;
+															background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $inputs['asset_id']   ?>/image_thumb.jpg);
+															background-position:'center center';
+															background-repeat:'no-repeat';
+															background-size:'cover';	
+									      			'  >
+									      			
+				
+									      			
 									      			image
 									      		</div>
 									      	</div>							      

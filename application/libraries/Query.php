@@ -57,6 +57,111 @@ class Query {
 	}
 	
 	
+	function get_projects_with_assets( $where_array ){
+		
+
+		$join_array = array(
+									'assets' => 'assets.project_id = projects.id'
+									);
+		
+		$projects_raw = $this->CI->my_database_model->select_from_table( 
+			$table = 'projects', 
+			$select_what = 'asset_type_id ,assets.id as asset_id, projects.id as project_id, projects.*',    
+			$where_array, 
+			$use_order = TRUE, 
+			$order_field = 'asset_type_id, assets.created', 
+			$order_direction = 'asc', 
+			$limit = -1, 
+			$use_join = TRUE, 
+			$join_array
+			);
+			
+		$projects_raw = $this->CI->tools->object_to_array($projects_raw);
+
+
+		if( count($projects_raw) == 0 ){
+			
+				$projects_raw = $this->CI->my_database_model->select_from_table( 
+					$table = 'projects', 
+					$select_what = 'projects.id as project_id, projects.*',    
+					$where_array, 
+					$use_order = FALSE, 
+					$order_field = '', 
+					$order_direction = 'asc', 
+					$limit = -1
+					);
+					
+					$projects = $this->CI->tools->object_to_array($projects_raw);
+
+				return $projects;		
+			
+		};
+
+		$count=0;
+
+		$previous_id = -1;
+			
+		$asset_types = array(
+			0 => 'XXXX',
+			1 => 'Video Stills',
+			2 => 'Videos',
+		);
+		
+
+		foreach( $projects_raw  as $key =>  $project){
+			$count++;
+			if( $project['asset_type_id'] == $previous_id || $previous_id == -1){
+
+					foreach( $project  as  $field => $value){
+		 
+						 	if( $field != 'asset_id'){
+						 			$array[$field] = $value;
+							}else{
+									$assets[] = $value;
+							};
+						
+					}
+					
+					
+					
+
+			}else{
+
+					$array['assets'] = $assets;	
+					unset($assets);			
+					$projects[$asset_types[  $previous_id  ]] = $array;					
+			
+					foreach( $project  as  $field => $value){
+		 
+						 	if( $field != 'asset_id'){
+						 			$array[$field] = $value;
+							}else{
+									$assets[] = $value;
+							};
+						
+					}					
+
+
+
+			};
+			
+			$previous_id = $project['asset_type_id'];			
+
+		}
+		
+		if( $count ==  count($projects_raw) ){
+
+						$array['assets'] = ( isset($assets ) ? $assets :array());				
+						$projects[$asset_types[   $previous_id  ]] = $array;
+	
+		};
+		
+		$projects[] = $projects[  $asset_types[  $previous_id  ] ];  // IE: $projects['video stills']
+
+		return $projects;
+		
+	}
+	
 	function clear_table_of_empty_records_flagged_with_update_field_equals_0000( $table ){
 		
 			$this->CI->my_database_model->delete_from_table(

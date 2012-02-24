@@ -37,20 +37,15 @@ class Main extends CI_Controller {
 		if( $this->input->get('project_id') == -1 ){
 			$project_id = $this->my_database_model->insert_table( $table = 'projects', $insert_what = array() );
 		}else{
-			$projects =   $this->tools->object_to_array( $this->my_database_model->select_from_table( 
-			$table = 'projects', 
-			$select_what = '*',    
-			$where_array = array(
-				'id' => $this->input->get('project_id')
-			), 
-			$use_order = TRUE, 
-			$order_field = 'created', 
-			$order_direction = 'desc', 
-			$limit = -1, 
-			$use_join = FALSE, 
-			$join_array = array()
-			));
+
+
+			$join_array = array(
+									'assets' => 'assets.user_id = users.id'
+									);
+
 			
+			$projects =   $this->query->get_projects_with_assets($where_array = array('projects.id' => $this->input->get('project_id')));
+
 			$project_id = $projects[0]['id'];
 			
 		};
@@ -69,7 +64,7 @@ class Main extends CI_Controller {
 				array('input_name'=>'description', 'type' => 'textarea', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['description'] :'' ), 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
 				array('input_name'=>'client', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['client'] :'' ), 'label' => 'Client', 'placeholder' => ''),
 				array('input_name'=>'date', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['date'] :'' ), 'label' => 'Date', 'placeholder' => ''),
-				array('input_name'=>'fileImage', 'type' => 'file', 'project_id' => $project_id, 'asset_id' => '-1', 'asset_type_id' => '1', 'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'fileuploader_name' => 'upload_button_video_still', 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px')),
+				array('input_name'=>'fileImage', 'type' => 'file', 'project_id' => $project_id, 'asset_id' => '-1', 'asset_type_id' => '1', 'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'fileuploader_name' => 'upload_button_video_still', 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px'), 'asset_id' => $projects['Video Stills']['assets'][0]),
 				array('input_name'=>'fileVideo', 'type' => 'file', 'project_id' => $project_id, 'asset_id' => '-1', 'asset_type_id' => '2', 'label' => 'Select video mp4 file', 'thumbnailbox' => 0, 'fileuploader_name' => 'upload_button_video'),
 				array(
 						'input_name'=>'sports', 
@@ -84,6 +79,7 @@ class Main extends CI_Controller {
 			)
 		);
 		
+	
 		$data = array(
 			'input_array' =>  $input_array,
 			'legend' =>   $this->input->get('legend')

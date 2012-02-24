@@ -143,7 +143,7 @@ class Ajax extends CI_Controller {
 			$width_of_file = $asset_information[0];
 			$height_of_file = $asset_information[1];
 			
-			$this->thumbnail_size_width  = '181';
+			$this->thumbnail_size_width  = '160';
 			$this->thumbnail_size_height = '120';			
 			
 			$new_width = $this->thumbnail_size_width;
