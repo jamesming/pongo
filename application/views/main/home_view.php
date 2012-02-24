@@ -300,7 +300,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			$(document).ready(function() {
 				
 						$('.theList').click(function(event) {
-							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random='+Math.floor(Math.random()*11), function() {
+							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
 							  $('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
 							  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
 							  });	

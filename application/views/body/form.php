@@ -218,11 +218,11 @@
 															// alert(data);
 															//$('#zoom_close').click(hide);
 															
-															window.parent.$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/<?php  echo $data['input_array']['inputs'][0]['value']   ?>?legend=' + encodeURI('test test')  + '&random=' + Math.floor(Math.random()*11 ) , function() {
-															  window.parent.$('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
-															  	window.parent.$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
-															  });	
-															});
+//															window.parent.$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/<?php  echo $data['input_array']['inputs'][0]['value']   ?>?legend=' + encodeURI('test test')  + '&random=' + Math.floor(Math.random()*11 ) , function() {
+////															  window.parent.$('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+////															  	window.parent.$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
+////															  });	
+//															});
 															
 															window.parent.$('#close_fancy_zoom').click();
 												});	
