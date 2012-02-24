@@ -196,11 +196,11 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									            <div class="accordion-group">
 									              <div class="accordion-heading">
 									
-									                <a category_id='<?php echo $category['id']    ?>' legend='<?php echo $category['name']    ?>' class="accordion-toggle theList"  data-toggle="collapse" data-parent="#accordion2" 
+									                <a category_id='<?php echo $category['id']    ?>' legend='<?php echo $category['name']    ?>' class="accordion-toggle theList"  data-toggle="collapse" data-parent="#accordion2"   style='cursor:pointer'  
 									                	
 									                	<?php if( $category['projects'][0]['project_id'] != '' ){?>
 									                	
-									                			href="#collapse<?php echo $key    ?>"
+									                			href="#collapse<?php echo $category['id']    ?>"
 									                	
 									                	<?php }else{?>
 									                	
@@ -208,13 +208,11 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									                	
 									                	<?php } ?>
 									                	
-									                	
-									                	
 									                >
 									                  <?php echo $category['name']    ?>
 									                </a>
 									              </div>
-									              <div id="collapse<?php echo $key    ?>" class="accordion-body collapse"   >
+									              <div id="collapse<?php echo  $category['id']    ?>" class="accordion-body collapse"   >
 									                <div class="accordion-inner">
 									                  <ol  class='accordion-inner_listing' category_id='<?php echo $category['id']    ?>'    >
 									                  	
@@ -334,7 +332,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						});	
 						
 						$('#test').click(function(event) {
-									$('.accordion-heading a[category_id=5]').attr('href','#collapse'+4)
+									$('.accordion-heading a[category_id=5]').attr('href','#collapse'+5)
 						});	
 						
 						//.fancyZoom();

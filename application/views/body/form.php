@@ -246,8 +246,8 @@
 																			  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
 																			  	
 																			  });	
-																		
-																		;
+																			  
+																		window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').attr('href','#collapse'+$('#category_id').val());
 			
 															}else{
 																
