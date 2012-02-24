@@ -144,9 +144,6 @@
 							        </div>
 							
 							      </div>
-
-							      <?php if(  $inputs['thumbnailbox']== 1){?>
-							      
 							      
 							      <script type="text/javascript" language="Javascript">
 							      
@@ -169,7 +166,12 @@
 								      
 								      });
 							      
-							      </script>
+							      </script>							      
+
+							      <?php if(  $inputs['thumbnailbox']== 1){?>
+							      
+							      
+
 							      							      
 							      
 									      	<div  class='clearfix '   style='margin-bottom:20px'   >
@@ -223,9 +225,8 @@
 																'background-position':'center center',
 																'background-repeat':'no-repeat',
 																'background-size':'cover',	
-															}).html('');
-															
-															window.parent.$('.thumbnail').parent().attr('project_id','<?php echo $data['input_array']['primary_key']    ?>');
+															}).html('')
+															.parent().parent().attr('project_id','<?php echo $data['input_array']['primary_key']    ?>');
 															
 															window.parent.$('#close_fancy_zoom').click();
 												});	
