@@ -236,14 +236,20 @@
 																	
 																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'})
 																	
-																	var addthis = '<li>test</li>';
+																	clone.css({cursor:'pointer'}).fancyZoom().click(function(event) {
+							  	
+																  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
+																  	
+																  	$(this).children('.thumbnail').children().addClass('selected');
+									
+																  	window.parent.$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
+																  	
+																  });	
 																	
 																	window.parent.$('.thumbnail div.selected').parent().parent()
-																	.attr('new', '0').after(  clone  )
+																	.attr('new', '0').after(  clone  );
 																	
-																
 																	
-																	//alert(clone.html());
 																	
 																
 															};
