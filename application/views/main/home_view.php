@@ -301,6 +301,8 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 				
 						$('.theList').click(function(event) {
 							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
+								
+								/*  FANCYZOOM RIGHT PANEL */
 							  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
 							  	
 							  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
@@ -315,7 +317,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						
 						$('#test').fancyZoom();
 						
-						
+						/*  FANCYZOOM LEFT PANEL */
 					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
 					  	
 					  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');

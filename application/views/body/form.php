@@ -226,12 +226,29 @@
 												set_what:$('#form0').serialize()
 												},function(data) {
 													
+													
+													/* MODIFY LEFT PANEL WITH NEW EDITS */
+													
 															window.parent.$('.accordion-inner_listing li[project_id=<?php echo $data['input_array']['primary_key']    ?>]').text($('#name').val());
 															
 															var accordion_inner_listing_li = window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').clone();
 															
+															/*  FANCYZOOM NEW LEFT LISTING */
+															accordion_inner_listing_li.css({cursor:'pointer'}).fancyZoom().click(function(event) {
+					  	
+														  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
+														  	
+														  	$(this).children('.thumbnail').children().addClass('selected');
+									
+														  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
+														  	
+														  });	
 															
 															window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
+
+
+
+													/* MODIFY RIGHT PANEL WITH NEW EDITS */
 
 															window.parent.$('.thumbnail div.selected').css({
 																'background-image': 'url(<?php  echo base_url()   ?>uploads/' + $('#thumbnail').attr('asset_id') + '/image_thumb.jpg?random=<?php echo  rand(3452345,345345)   ?>)',
@@ -241,7 +258,7 @@
 															}).html('')
 															.parent().parent().attr('project_id','<?php echo $data['input_array']['primary_key']    ?>');
 															
-															
+															/* ADD NEW BOX */
 															if( window.parent.$('.thumbnail div.selected').parent().parent().attr('new') == 1 ){
 																
 																
@@ -249,6 +266,7 @@
 																	
 																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'}).text('NEW ONE')
 																	
+																	/*  FANCYZOOM NEW LEFT LISTING */
 																	clone.css({cursor:'pointer'}).fancyZoom().click(function(event) {
 							  	
 																  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
@@ -261,9 +279,6 @@
 																	
 																	window.parent.$('.thumbnail div.selected').parent().parent()
 																	.attr('new', '0').after(  clone  );
-																	
-																	
-																	
 																
 															};
 															
