@@ -333,6 +333,8 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						
 						$('#test').click(function(event) {
 									$('.accordion-heading a[category_id=5]').attr('href','#collapse'+5)
+									.click()
+									
 						});	
 						
 						//.fancyZoom();

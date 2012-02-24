@@ -247,7 +247,8 @@
 																			  	
 																			  });	
 																			  
-																		window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').attr('href','#collapse'+$('#category_id').val());
+																		/* MAKE LISTING COLLASPABLE*/
+																		window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').attr('href','#collapse'+$('#category_id').val()).click();
 			
 															}else{
 																
