@@ -26,18 +26,102 @@ class Query {
 	}
 	
 	
-	function get_categories(){
-			
-		return $this->CI->tools->object_to_array(
-				$this->CI->my_database_model->select_from_table( 
+	function get_categories_with_or_without_projects(){
+		
+		$join_array = array(
+									'projects' => 'projects.category_id = categories.id'
+									);	
+											
+		
+		$categories_raw =  $this->CI->my_database_model->select_from_table_left_join( 
 					$table = 'categories', 
-					$select_what = '*',    
+					$select_what = 'categories.*, projects.id as project_id, projects.name as project_name ',    
 					$where_array = array(), 
-					$use_order = FALSE, 
-					$order_field = 'created', 
+					$use_order = TRUE, 
+					$order_field = 'categories.id, project_id', 
 					$order_direction = 'asc', 
-					$limit = -1
-					));
+					$limit = -1, 
+					$use_join = TRUE, 
+					$join_array
+					);
+					
+					
+		$categories_raw = $this->CI->tools->object_to_array($categories_raw);
+		
+
+		$count = 0;
+
+		$previous_id = 0;
+		
+		foreach( $categories_raw  as $key =>  $category){
+			$count++;
+			if( $category['id'] == $previous_id || $previous_id == 0){
+
+					foreach( $category  as  $field => $value){
+		 
+		 
+						 	if (!in_array($field, array('project_id', 'project_name'))){
+						 			$category_array[$field] = $value;
+							}else{
+									
+									if( $field =='project_id'){
+										$grouped_project['project_id'] = $value;
+									}elseif( $field =='project_name'){
+										$grouped_project['project_name'] = $value;
+									};
+									
+									
+									
+							};
+					}
+					
+					$projects[] = $grouped_project;
+					unset($grouped_project);
+
+			}else{
+
+					$category_array['projects'] = $projects;	
+					unset($projects);							
+
+					$categories[] = $category_array;	
+
+					foreach( $category  as  $field => $value){
+		 
+						 	if (!in_array($field, array('project_id', 'project_name'))){
+						 			$category_array[$field] = $value;
+							}else{
+								
+									if( $field =='project_id'){
+										$grouped_project['project_id'] = $value;
+									}elseif( $field =='project_name'){
+										$grouped_project['project_name'] = $value;
+									};
+
+									
+							};
+						
+					}		
+					
+					$projects[] = $grouped_project;
+					unset($grouped_project);								
+			};
+
+			
+			$previous_id = $category['id'];		
+			
+
+		}
+		
+		if( $count ==  count($categories_raw) ){
+
+						$category_array['projects'] = ( isset($projects ) ? $projects : array());				
+						$categories[] = $category_array;
+	
+		};
+
+		//echo '<pre>';print_r(  $categories   );echo '</pre>';  exit;	
+					
+		return $this->CI->tools->object_to_array( $categories );
 	}
 	
 	function get_projects_with_or_without_assets( $category_id ){

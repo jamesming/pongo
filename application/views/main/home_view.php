@@ -193,27 +193,27 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 												
 												foreach( $data['categories']  as  $key => $category){?>
 													
-															<?php     
-																$random = mt_rand(1, 15);
-															?>
-												
 									            <div class="accordion-group">
 									              <div class="accordion-heading">
 									
-									                <a category_id='<?php echo $category['id']    ?>' legend='<?php echo $category['name']    ?>' class="accordion-toggle theList" howmany_entries=<?php echo $random    ?> data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
+									                <a category_id='<?php echo $category['id']    ?>' legend='<?php echo $category['name']    ?>' class="accordion-toggle theList"  data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
 									                  <?php echo $category['name']    ?>
 									                </a>
 									              </div>
 									              <div id="collapse<?php echo $key    ?>" class="accordion-body collapse">
 									                <div class="accordion-inner">
-									                  <ol>
-									                  	<?php for($i=1;$i<=$random;$i++ ){?>
+									                  <ol  id='accordion-inner_listing'>
 									                  	
-											                  	<li   style='cursor:pointer'  >
-											                  		 <?php echo $category['name']    ?> Show <?php echo $i    ?>
+									                  	
+									                  	<?php foreach( $category['projects']  as  $project ){?>
+									                  	
+											                  	<li   style='cursor:pointer' project_id='<?php echo $project['project_id']    ?>' >
+											                  		 <?php echo $category['name']    ?> Show <?php echo $project['project_name']    ?>
 											                  	</li>
 									                  	
 									                  	<?php } ?>
+									                  	
+									                  	
 									                  </ol>
 									                  
 									                </div>

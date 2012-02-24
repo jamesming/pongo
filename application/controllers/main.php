@@ -21,7 +21,7 @@ class Main extends CI_Controller {
 
 	public function index(){
 		
-		$categories = $this->query->get_categories();
+		$categories = $this->query->get_categories_with_or_without_projects();
 
 		$data = array(
 			'categories' => $categories

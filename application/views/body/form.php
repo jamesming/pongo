@@ -225,6 +225,8 @@
 												id:'<?php echo $data['input_array']['primary_key']    ?>',
 												set_what:$('#form0').serialize()
 												},function(data) {
+													
+															window.parent.$('#accordion-inner_listing li[project_id=<?php echo $data['input_array']['primary_key']    ?>]').text($('#name').val());
 
 															window.parent.$('.thumbnail div.selected').css({
 																'background-image': 'url(<?php  echo base_url()   ?>uploads/' + $('#thumbnail').attr('asset_id') + '/image_thumb.jpg?random=<?php echo  rand(3452345,345345)   ?>)',
