@@ -64,7 +64,7 @@ class Main extends CI_Controller {
 				array('input_name'=>'description', 'type' => 'textarea', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['description'] :'' ), 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
 				array('input_name'=>'client', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['client'] :'' ), 'label' => 'Client', 'placeholder' => ''),
 				array('input_name'=>'date', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['date'] :'' ), 'label' => 'Date', 'placeholder' => ''),
-				array('input_name'=>'fileImage', 'type' => 'file', 'project_id' => $project_id, 'asset_id' => '-1', 'asset_type_id' => '1', 'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'fileuploader_name' => 'upload_button_video_still', 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px'), 'asset_id' => $projects['Video Stills']['assets'][0]),
+				array('input_name'=>'fileImage', 'type' => 'file', 'project_id' => $project_id, 'asset_id' => '-1', 'asset_type_id' => '1', 'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'fileuploader_name' => 'upload_button_video_still', 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px'), 'asset_id' => ( isset($projects['Video Stills']['assets'][0] ) ? $projects['Video Stills']['assets'][0]:0 )),
 				array('input_name'=>'fileVideo', 'type' => 'file', 'project_id' => $project_id, 'asset_id' => '-1', 'asset_type_id' => '2', 'label' => 'Select video mp4 file', 'thumbnailbox' => 0, 'fileuploader_name' => 'upload_button_video'),
 				array(
 						'input_name'=>'sports', 

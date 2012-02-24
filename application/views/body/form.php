@@ -181,12 +181,7 @@
 															background-position:'center center';
 															background-repeat:'no-repeat';
 															background-size:'cover';	
-									      			'  >
-									      			
-				
-									      			
-									      			image
-									      		</div>
+									      			'  ></div>
 									      	</div>							      
 							     
 							     	<?php } ?>
