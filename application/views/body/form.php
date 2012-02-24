@@ -228,6 +228,26 @@
 															}).html('')
 															.parent().parent().attr('project_id','<?php echo $data['input_array']['primary_key']    ?>');
 															
+															
+															if( window.parent.$('.thumbnail div.selected').parent().parent().attr('new') == 1 ){
+																
+																
+																	var clone = window.parent.$('.thumbnail div.selected').parent().parent().clone();
+																	
+																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'})
+																	
+																	var addthis = '<li>test</li>';
+																	
+																	window.parent.$('.thumbnail div.selected').parent().parent()
+																	.attr('new', '0').after(  clone  )
+																	
+																
+																	
+																	//alert(clone.html());
+																	
+																
+															};
+															
 															window.parent.$('#close_fancy_zoom').click();
 												});	
 				

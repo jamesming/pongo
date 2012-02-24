@@ -306,7 +306,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 							  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
 							  	
 							  	$(this).children('.thumbnail').children().addClass('selected');
-							  	
+
 							  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
 							  	
 							  });	

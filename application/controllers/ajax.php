@@ -42,7 +42,7 @@ class Ajax extends CI_Controller {
 												
 												foreach( $projects  as  $key => $project){?>
 												
-														  <li class="fancyZoom span2"    href='#fancyZoom_div'  project_id='<?php echo $project['id']    ?>' category_id='<?php echo $category_id    ?>'  legend='<?php  echo $legend   ?>'>
+														  <li class="fancyZoom span2"  new='0'  href='#fancyZoom_div'  project_id='<?php echo $project['id']    ?>' category_id='<?php echo $category_id    ?>'  legend='<?php  echo $legend   ?>'>
 														    <div class="thumbnail">
 														    	<div   style='text-align:center;
 														    								border:1px solid gray;
@@ -60,7 +60,7 @@ class Ajax extends CI_Controller {
 														  
 												<?php } ?>
 	
-											  <li class="fancyZoom span2"    href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
+											  <li class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
 											    <div   class="thumbnail">
 											    	<div  style='text-align:center;border:1px solid gray;height:120px'  >NEW ONE
 														</div>
