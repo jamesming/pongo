@@ -43,7 +43,7 @@ class Ajax extends CI_Controller {
 												
 														  <li class="fancyZoom span2"    href='#fancyZoom_div'  project_id='<?php echo $project['id']    ?>' category_id='<?php echo $category_id    ?>'  legend='<?php  echo $legend   ?>'>
 														    <div class="thumbnail">
-														    	<div   style='text-align:center;
+														    	<div  asset_id=<?php  echo ( isset($project['asset_id'] ) ? $project['asset_id']:'0' )   ?> style='text-align:center;
 														    								border:1px solid gray;
 														    								height:120px;
 																								background-image: url(<?php  echo base_url()   ?>uploads/<?php echo  $project['asset_id']     ?>/image_thumb.jpg?T<?php  rand(3445,345345)   ?>=<?php  rand(3445,345345)   ?>);
