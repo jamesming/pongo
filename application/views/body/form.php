@@ -221,7 +221,7 @@
 																'background-position':'center center',
 																'background-repeat':'no-repeat',
 																'background-size':'cover',	
-															})
+															}).html('')
 															window.parent.$('#close_fancy_zoom').click();
 												});	
 				
