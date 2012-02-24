@@ -40,7 +40,9 @@ class Ajax extends CI_Controller {
 												
 												<?php 
 												
-												foreach( $projects  as  $key => $project){?>
+												foreach( $projects  as  $key => $project){
+													
+													if( !in_array($project['asset_type_id'], array('2'))){?>
 												
 														  <li class="fancyZoom span2"  new='0'  href='#fancyZoom_div'  project_id='<?php echo $project['id']    ?>' category_id='<?php echo $category_id    ?>'  legend='<?php  echo $legend   ?>'>
 														    <div class="thumbnail">
@@ -57,8 +59,11 @@ class Ajax extends CI_Controller {
 														    </div>
 														   
 														  </li>									
-														  
-												<?php } ?>
+														  														
+													<?php
+													};
+
+												 } ?>
 	
 											  <li class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
 											    <div   class="thumbnail">
