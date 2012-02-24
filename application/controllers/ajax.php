@@ -185,7 +185,7 @@ class Ajax extends CI_Controller {
 			<script type="text/javascript" language="Javascript">
 			 $(document).ready(function() { 
 						window.parent.$('#thumbnail').css({
-							'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $asset_id   ?>/image_thumb.jpg?random=<?php  rand(3452345,345345)   ?>)',
+							'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $asset_id   ?>/image_thumb.jpg?random=<?php  echo rand(3452345,345345)   ?>)',
 							'background-position':'center center',
 							'background-repeat':'no-repeat',
 							'background-size':'cover',	
