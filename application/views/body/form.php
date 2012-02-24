@@ -171,7 +171,7 @@
 							      <?php if(  $inputs['thumbnailbox']== 1){?>
 							      
 									      	<div  class='clearfix '   style='margin-bottom:20px'   >
-									      		<div  id='thumbnail' asset_id=<?php  echo $inputs['asset_id']   ?> style='
+									      		<div  id='thumbnail' asset_id='<?php  echo $inputs['asset_id']   ?>' style='
 									      			border:1px solid #CCCCCC;
 									      			text-align:center; 
 									      			width:<?php echo $inputs['thumbnailbox-size']['width']    ?>;
@@ -215,7 +215,8 @@
 												id:'<?php echo $data['input_array']['primary_key']    ?>',
 												set_what:$('#form0').serialize()
 												},function(data) {
-															window.parent.$('.thumbnail div[asset_id=' + $('#thumbnail').attr('asset_id') + ']').css({
+
+															window.parent.$('.thumbnail div.selected').css({
 																'background-image': 'url(<?php  echo base_url()   ?>uploads/' + $('#thumbnail').attr('asset_id') + '/image_thumb.jpg?random=<?php echo  rand(3452345,345345)   ?>)',
 																'background-position':'center center',
 																'background-repeat':'no-repeat',
