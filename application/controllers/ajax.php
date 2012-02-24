@@ -46,7 +46,7 @@ class Ajax extends CI_Controller {
 														    	<div   style='text-align:center;
 														    								border:1px solid gray;
 														    								height:120px;
-																								background-image: url(<?php  echo base_url()   ?>uploads/<?php echo  $project['asset_id']     ?>/image_thumb.jpg?random=<?php  rand(3452345,345345)   ?>);
+																								background-image: url(<?php  echo base_url()   ?>uploads/<?php echo  $project['asset_id']     ?>/image_thumb.jpg?<?php  rand(3445,345345)   ?>=<?php  rand(3445,345345)   ?>);
 																								background-position:center center;
 																								background-repeat:no-repeat;
 																								background-size:cover;'  >
