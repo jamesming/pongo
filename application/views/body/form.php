@@ -226,7 +226,12 @@
 												set_what:$('#form0').serialize()
 												},function(data) {
 													
-															window.parent.$('#accordion-inner_listing li[project_id=<?php echo $data['input_array']['primary_key']    ?>]').text($('#name').val());
+															window.parent.$('.accordion-inner_listing li[project_id=<?php echo $data['input_array']['primary_key']    ?>]').text($('#name').val());
+															
+															var accordion_inner_listing_li = window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').clone();
+															
+															
+															window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
 
 															window.parent.$('.thumbnail div.selected').css({
 																'background-image': 'url(<?php  echo base_url()   ?>uploads/' + $('#thumbnail').attr('asset_id') + '/image_thumb.jpg?random=<?php echo  rand(3452345,345345)   ?>)',

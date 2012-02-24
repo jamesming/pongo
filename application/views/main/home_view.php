@@ -202,13 +202,13 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									              </div>
 									              <div id="collapse<?php echo $key    ?>" class="accordion-body collapse">
 									                <div class="accordion-inner">
-									                  <ol  id='accordion-inner_listing'>
+									                  <ol  class='accordion-inner_listing ' category_id='<?php echo $category['id']    ?>'>
 									                  	
 									                  	
 									                  	<?php foreach( $category['projects']  as  $project ){?>
-									                  	
-											                  	<li   style='cursor:pointer' project_id='<?php echo $project['project_id']    ?>' >
-											                  		 <?php echo $category['name']    ?> Show <?php echo $project['project_name']    ?>
+									                  		
+											                  	<li 	 class="fancyZoom "  new='0'  href='#fancyZoom_div'  category_id='<?php echo $category['id']    ?>'  legend='<?php echo $category['name']    ?>' project_id='<?php echo $project['project_id']    ?>' >
+											                  		<?php echo $project['project_name']    ?>
 											                  	</li>
 									                  	
 									                  	<?php } ?>
@@ -301,7 +301,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 				
 						$('.theList').click(function(event) {
 							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
-							  $('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+							  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
 							  	
 							  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
 							  	
@@ -313,7 +313,18 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 							});
 						});	
 						
-						$('#test').fancyZoom()
+						$('#test').fancyZoom();
+						
+						
+					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+					  	
+					  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
+					  	
+					  	$(this).children('.thumbnail').children().addClass('selected');
+
+					  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
+					  	
+					  });	
 						
 						
 			});
