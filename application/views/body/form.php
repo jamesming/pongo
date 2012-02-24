@@ -181,7 +181,7 @@
 									      			width:<?php echo $inputs['thumbnailbox-size']['width']    ?>;
 									      			height:<?php echo $inputs['thumbnailbox-size']['height']    ?>;
 									      			margin:0 auto;
-															background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $inputs['asset_id']   ?>/image_thumb.jpg);
+															background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $inputs['asset_id']   ?>/image_thumb.jpg?random=<?php echo rand(345345,32452345)    ?>);
 															background-position:'center center';
 															background-repeat:'no-repeat';
 															background-size:'cover';	
@@ -234,7 +234,7 @@
 																
 																	var clone = window.parent.$('.thumbnail div.selected').parent().parent().clone();
 																	
-																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'})
+																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'}).text('NEW ONE')
 																	
 																	clone.css({cursor:'pointer'}).fancyZoom().click(function(event) {
 							  	
