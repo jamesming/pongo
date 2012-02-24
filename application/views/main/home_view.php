@@ -196,22 +196,40 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									            <div class="accordion-group">
 									              <div class="accordion-heading">
 									
-									                <a category_id='<?php echo $category['id']    ?>' legend='<?php echo $category['name']    ?>' class="accordion-toggle theList"  data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $key    ?>">
+									                <a category_id='<?php echo $category['id']    ?>' legend='<?php echo $category['name']    ?>' class="accordion-toggle theList"  data-toggle="collapse" data-parent="#accordion2" 
+									                	
+									                	<?php if( $category['projects'][0]['project_id'] != '' ){?>
+									                	
+									                			href="#collapse<?php echo $key    ?>"
+									                	
+									                	<?php }else{?>
+									                	
+									                			
+									                	
+									                	<?php } ?>
+									                	
+									                	
+									                	
+									                >
 									                  <?php echo $category['name']    ?>
 									                </a>
 									              </div>
-									              <div id="collapse<?php echo $key    ?>" class="accordion-body collapse">
+									              <div id="collapse<?php echo $key    ?>" class="accordion-body collapse"   >
 									                <div class="accordion-inner">
-									                  <ol  class='accordion-inner_listing ' category_id='<?php echo $category['id']    ?>'>
+									                  <ol  class='accordion-inner_listing' category_id='<?php echo $category['id']    ?>'    >
 									                  	
 									                  	
-									                  	<?php foreach( $category['projects']  as  $project ){?>
-									                  		
-											                  	<li 	 class="fancyZoom "  new='0'  href='#fancyZoom_div'  category_id='<?php echo $category['id']    ?>'  legend='<?php echo $category['name']    ?>' project_id='<?php echo $project['project_id']    ?>' >
-											                  		<?php echo $project['project_name']    ?>
-											                  	</li>
+									                  	<?php foreach( $category['projects']  as  $project ){
 									                  	
-									                  	<?php } ?>
+									                  			if( $project['project_id'] != ''){?>
+									                  				
+														                  	<li 	 class="fancyZoom "  new='0'  href='#fancyZoom_div'  category_id='<?php echo $category['id']    ?>'  legend='<?php echo $category['name']    ?>' project_id='<?php echo $project['project_id']    ?>' >
+														                  		<?php echo $project['project_name']    ?>
+														                  	</li>									                  			
+									                  			
+									                  			<?php } 
+									                  			
+									                  	} ?>
 									                  	
 									                  	
 									                  </ol>
@@ -315,7 +333,11 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 							});
 						});	
 						
-						$('#test').fancyZoom();
+						$('#test').click(function(event) {
+									$('.accordion-heading a[category_id=5]').attr('href','#collapse'+4)
+						});	
+						
+						//.fancyZoom();
 						
 						/*  FANCYZOOM LEFT PANEL */
 					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {

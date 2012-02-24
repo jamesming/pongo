@@ -22,10 +22,12 @@ class Main extends CI_Controller {
 	public function index(){
 		
 		$categories = $this->query->get_categories_with_or_without_projects();
-
+		
 		$data = array(
 			'categories' => $categories
 		);
+
+		// echo '<pre>';print_r(  $categories  );echo '</pre>';  exit;
 
 		$this->load->view('main/home_view',
 					array('data' => $data));	    
@@ -35,7 +37,11 @@ class Main extends CI_Controller {
 	public function add_asset(){
 
 		if( $this->input->get('project_id') == -1 ){
+			
 			$project_id = $this->my_database_model->insert_table( $table = 'projects', $insert_what = array() );
+			
+			$new = 1;
+			
 		}else{
 			
 			$projects =   $this->query->get_projects_with_assets($where_array = array('projects.id' => $this->input->get('project_id')));
@@ -54,6 +60,7 @@ class Main extends CI_Controller {
 			'inputs' => array(
 			
 				array('input_name'=>'category_id', 'type' => 'hidden', 'value' => $category_id, 'label' => '', 'placeholder' => ''),
+				array('input_name'=>'new', 'type' => 'hidden', 'value' => ( isset( $new ) ? 1:'0' ), 'label' => '', 'placeholder' => ''),
 				array('input_name'=>'name', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['name'] :'' ), 'label' => 'Project', 'placeholder' => 'type in project name'),
 				array('input_name'=>'description', 'type' => 'textarea', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['description'] :'' ), 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
 				array('input_name'=>'client', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['client'] :'' ), 'label' => 'Client', 'placeholder' => ''),
@@ -84,13 +91,6 @@ class Main extends CI_Controller {
 		
 
 	}	
-
-
-	public function update(){
-
-		echo  $this->query->update( $this->input->post()  );
-		
-	}
 
 
 

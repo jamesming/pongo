@@ -32,8 +32,6 @@ class Ajax extends CI_Controller {
 		$category_id = $this->uri->segment(3);
 		
 		$projects = $this->query->get_projects_with_or_without_assets( $category_id );
-		
-		//echo '<pre>';print_r( $projects  );echo '</pre>';  exit;
 
 		?>
 											<ul class="thumbnails ">
@@ -78,6 +76,12 @@ class Ajax extends CI_Controller {
 		
 	}
 
+
+	public function update(){
+
+		echo  $this->query->update( $this->input->post()  );
+		
+	}
 
 	public function upload(){
      

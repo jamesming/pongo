@@ -220,7 +220,7 @@
           			.css({position:'relative', left:($(window).width() / 2) - ($('button#submit-button').width()/2) })
           			.click(function(event) {
 												
-												$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
+												$.post("<?php echo base_url(). 'index.php/ajax/update';    ?>",{
 												table:'<?php echo $data['input_array']['table']    ?>',
 												id:'<?php echo $data['input_array']['primary_key']    ?>',
 												set_what:$('#form0').serialize()
@@ -229,23 +229,32 @@
 													
 													/* MODIFY LEFT PANEL WITH NEW EDITS */
 													
-															window.parent.$('.accordion-inner_listing li[project_id=<?php echo $data['input_array']['primary_key']    ?>]').text($('#name').val());
-															
-															var accordion_inner_listing_li = window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').clone();
-															
-															/*  FANCYZOOM NEW LEFT LISTING */
-															accordion_inner_listing_li.css({cursor:'pointer'}).fancyZoom().click(function(event) {
-					  	
-														  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
-														  	
-														  	$(this).children('.thumbnail').children().addClass('selected');
-									
-														  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
-														  	
-														  });	
-															
-															window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
-
+															if( $('#new').val() == 1){
+																
+																		/* NEW LISTING */
+																		var accordion_inner_listing_li = "<li 	 class='fancyZoom '  new='0'  href='#fancyZoom_div'  category_id='" + $('#category_id').val() +  "'  legend='<?php echo $data['legend']   ?>' project_id='<?php echo $data['input_array']['primary_key']    ?>' >" + $('#name').val() +  "</li>";
+																		
+																		window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
+																		
+																				/*  FANCYZOOM NEW LEFT LISTING */
+																				window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+										  	
+																			  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
+																			  	
+																			  	$(this).children('.thumbnail').children().addClass('selected');
+														
+																			  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
+																			  	
+																			  });	
+																		
+																		;
+			
+															}else{
+																
+																		/* JUST MODIFY THE TITLE */
+																		window.parent.$('.accordion-inner_listing li[project_id=<?php echo $data['input_array']['primary_key']    ?>]').text($('#name').val());
+																
+															};
 
 
 													/* MODIFY RIGHT PANEL WITH NEW EDITS */
