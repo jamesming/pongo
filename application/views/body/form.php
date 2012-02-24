@@ -144,6 +144,9 @@
 							        </div>
 							
 							      </div>
+
+							      <?php if(  $inputs['thumbnailbox']== 1){?>
+							      
 							      
 							      <script type="text/javascript" language="Javascript">
 							      
@@ -167,8 +170,7 @@
 								      });
 							      
 							      </script>
-							      
-							      <?php if(  $inputs['thumbnailbox']== 1){?>
+							      							      
 							      
 									      	<div  class='clearfix '   style='margin-bottom:20px'   >
 									      		<div  id='thumbnail' asset_id='<?php  echo $inputs['asset_id']   ?>' style='
@@ -221,7 +223,10 @@
 																'background-position':'center center',
 																'background-repeat':'no-repeat',
 																'background-size':'cover',	
-															}).html('')
+															}).html('');
+															
+															window.parent.$('.thumbnail').parent().attr('project_id','<?php echo $data['input_array']['primary_key']    ?>');
+															
 															window.parent.$('#close_fancy_zoom').click();
 												});	
 				

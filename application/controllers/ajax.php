@@ -33,6 +33,8 @@ class Ajax extends CI_Controller {
 		
 		$projects = $this->query->get_projects_with_or_without_assets( $category_id );
 		
+		//echo '<pre>';print_r( $projects  );echo '</pre>';  exit;
+
 		?>
 											<ul class="thumbnails ">
 												
@@ -45,10 +47,12 @@ class Ajax extends CI_Controller {
 														    	<div   style='text-align:center;
 														    								border:1px solid gray;
 														    								height:120px;
-																								background-image: url(<?php  echo base_url()   ?>uploads/<?php echo  $project['asset_id']     ?>/image_thumb.jpg?T<?php  rand(3445,345345)   ?>=<?php  rand(3445,345345)   ?>);
+														    								width:160px;
+																								background-image: url(<?php  echo base_url()   ?>uploads/<?php echo  $project['asset_id']     ?>/image_thumb.jpg?random=<?php  rand(3445,345345)   ?>);
 																								background-position:center center;
 																								background-repeat:no-repeat;
 																								background-size:cover;'  >
+																								
 														    	</div>
 														    </div>
 														   
@@ -86,6 +90,8 @@ class Ajax extends CI_Controller {
 							)
 		){
 
+			// DO NOTHING 
+			
 			
 		}else{
 			
