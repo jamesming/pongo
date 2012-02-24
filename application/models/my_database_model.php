@@ -326,6 +326,107 @@ function select_from_table(
 
 
 /**
+ * Select from table
+ *
+ * {@source }
+ * @package BackEnd
+ * @author James Ming <jamesming@gmail.com>
+ * @access public
+ * @codeigniter_library database
+ * @uses Unit_test::test_my_database_model_select_from_table()
+ * @param string $table
+ * @param string $select_what
+ * @param array $where_array ({field} => {value})
+ * @param array $group_by_array
+ * @return array */
+
+function select_from_table_left_join( 
+	$table, 
+	$select_what, 
+	$where_array, 
+	$use_order = FALSE, 
+	$order_field = '', 
+	$order_direction = 'asc', 
+	$limit = -1, 
+	$use_join = FALSE, 
+	$join_array = array(), 
+	$group_by_array = array(),
+	$or_where_array = array()
+	){
+	
+
+	
+	$this->db->select($select_what);
+	
+	if( count($where_array) > 0 ){
+		
+		foreach( $where_array as $field => $value ){
+			$this->db->where($field, $value);
+		}		
+		
+	};
+	
+
+	if( count($or_where_array) > 0 ){
+		
+		foreach( $or_where_array as $field => $value ){
+			$this->db->or_where($field, $value);
+		}		
+		
+	};	
+
+
+	if( $use_order == TRUE){
+		
+		$this->db->order_by($order_field. ' '.$order_direction);
+		
+		
+		if( $use_join == FALSE){
+			
+				$this->db->order_by('created desc');
+			
+		};
+		
+		
+	}else{
+		
+		$this->db->order_by('created asc');
+		
+	};
+	
+	if( $limit == -1 ){
+		
+	}else{
+		$this->db->limit($limit);
+	};
+	
+	if( $use_join == TRUE){
+		
+
+			if( count($join_array) > 0 ){
+				
+				
+		
+				foreach( $join_array as $field => $value ){
+					$this->db->join($field, $value, 'left');
+				}		
+				
+			};
+			
+	};
+	
+	
+	$this->db->group_by( $group_by_array );
+	
+	
+	
+	$query = $this->db->get($table); 
+	
+	return $query->result(); 
+	
+}
+
+/**
  * Counts records
  *
  * {@source }

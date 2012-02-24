@@ -31,7 +31,8 @@ class Ajax extends CI_Controller {
 		
 		$category_id = $this->uri->segment(3);
 		
-		$projects = $this->query->get_projects( $category_id );
+		$projects = $this->query->get_projects_with_or_without_assets( $category_id );
+			
 
 		?>
 											<ul class="thumbnails ">
@@ -42,7 +43,13 @@ class Ajax extends CI_Controller {
 												
 														  <li class="fancyZoom span2"    href='#fancyZoom_div'  project_id='<?php echo $project['id']    ?>' category_id='<?php echo $category_id    ?>'  legend='<?php  echo $legend   ?>'>
 														    <div class="thumbnail">
-														    	<div   style='text-align:center;border:1px solid gray;height:120px'  ><?php echo ($project['name'] );    ?>
+														    	<div   style='text-align:center;
+														    								border:1px solid gray;
+														    								height:120px;
+																								background-image: url(<?php  echo base_url()   ?>uploads/<?php echo  $project['asset_id']     ?>/image_thumb.jpg?random=<?php  rand(3452345,345345)   ?>);
+																								background-position:center center;
+																								background-repeat:no-repeat;
+																								background-size:cover;'  >
 														    	</div>
 														    </div>
 														   

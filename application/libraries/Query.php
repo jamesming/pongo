@@ -40,20 +40,38 @@ class Query {
 					));
 	}
 	
-	function get_projects( $category_id ){
-			
-		return $this->CI->tools->object_to_array(
-			$this->CI->my_database_model->select_from_table( 
+	function get_projects_with_or_without_assets( $category_id ){
+		
+		$join_array = array(
+									'assets' => 'assets.project_id = projects.id'
+									);	
+									
+										
+		$projects = $this->CI->my_database_model->select_from_table_left_join( 
 				$table = 'projects', 
-				$select_what = '*',    
+				$select_what = '
+					projects.*, 
+					assets.id as asset_id,
+					assets.asset_type_id
+					',    
 				$where_array = array(
-					'category_id' => $category_id
+					'category_id' => $category_id,
 				), 
 				$use_order = FALSE, 
-				$order_field = 'created', 
+				$order_field = 'projects.created', 
 				$order_direction = 'asc', 
-				$limit = -1
-				));
+				$limit = -1, 
+				$use_join = TRUE, 
+				$join_array
+				);
+				
+	
+					
+		return $this->CI->tools->object_to_array($projects);
+		
+		
+		
+		
 	}
 	
 	

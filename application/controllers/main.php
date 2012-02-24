@@ -37,12 +37,6 @@ class Main extends CI_Controller {
 		if( $this->input->get('project_id') == -1 ){
 			$project_id = $this->my_database_model->insert_table( $table = 'projects', $insert_what = array() );
 		}else{
-
-
-			$join_array = array(
-									'assets' => 'assets.user_id = users.id'
-									);
-
 			
 			$projects =   $this->query->get_projects_with_assets($where_array = array('projects.id' => $this->input->get('project_id')));
 
