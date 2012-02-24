@@ -158,7 +158,13 @@
 																			        project_id:<?php echo $inputs['project_id']    ?>
 																			    },
 													                onComplete: function(id, fileName, responseJSON){
-													                	$('#iframe_dom').attr('src','<?php echo base_url()    ?>index.php/ajax/resize?asset_id='  + responseJSON['asset_id'] +  '&asset_type_id=' + responseJSON['asset_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
+													                	
+													                	<?php if( $inputs['asset_type_id'] == 1){?>
+													                		
+												                			$('#iframe_dom').attr('src','<?php echo base_url()    ?>index.php/ajax/resize?asset_id='  + responseJSON['asset_id'] +  '&asset_type_id=' + responseJSON['asset_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
+												                			
+												                		<?php } ?>
+													                	
 													                },
 													                debug: true,
 																					multiple: false
