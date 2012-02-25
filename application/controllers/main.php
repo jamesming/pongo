@@ -63,20 +63,19 @@ class Main extends CI_Controller {
 			
 				array('input_name'=>'category_id', 'type' => 'hidden', 'value' => $category_id, 'label' => '', 'placeholder' => ''),
 				array('input_name'=>'new', 'type' => 'hidden', 'value' => ( isset( $new ) ? 1:'0' ), 'label' => '', 'placeholder' => ''),
-				array('input_name'=>'name', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['name'] :'' ), 'label' => 'Project', 'placeholder' => 'type in project name'),
+				array('input_name'=>'name', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['name'] :'' ), 'label' => 'Name of Project', 'placeholder' => 'type in project name'),
 				array('input_name'=>'description', 'type' => 'textarea', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['description'] :'' ), 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
 				array('input_name'=>'client', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['client'] :'' ), 'label' => 'Client', 'placeholder' => ''),
 				array('input_name'=>'date', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['date'] :'' ), 'label' => 'Date', 'placeholder' => ''),
 				array('input_name'=>'fileImage', 'type' => 'file', 'category_id' => $category_id, 'project_id' => $project_id,  'asset_type_id' => '1',  'label' => 'Select video thumbnail', 'thumbnailbox' => 1, 'fileuploader_name' => 'upload_button_video_still', 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px'), 'asset_id' => ( isset($projects['Video Stills']['assets'][0] ) ? $projects['Video Stills']['assets'][0]:'-1' ), 'allowable extensions' => 'jpg'),
 				array('input_name'=>'fileVideo', 'type' => 'file', 'category_id' => $category_id, 'project_id' => $project_id,  'asset_type_id' => '2', 'label' => 'Select video mp4 file', 'thumbnailbox' => 0, 'fileuploader_name' => 'upload_button_video', 'asset_id' => ( isset($projects['Videos']['assets'][0] ) ? $projects['Videos']['assets'][0]:'-1' ), 'allowable extensions' => 'mp4'),
 				array(
-						'input_name'=>'sports', 
+						'input_name'=>'aspect_ratio', 
 						'type' => 'select', 
-						'label' => 'Sports',
+						'label' => 'Aspect Ratio',
 						'options' => array(
-								array('value' => '1','text' => 'football', 'selected' => ( isset( $projects[0]['name']) && $projects[0]['sports'] == 1  ? 1:'0')),
-								array('value' => '2','text' => 'soccer', 'selected' => ( isset( $projects[0]['name']) && $projects[0]['sports'] == 2  ? 1:'0')),
-								array('value' => '3','text' => 'baseball', 'selected' => ( isset( $projects[0]['name']) && $projects[0]['sports'] == 3  ? 1:'0')),
+								array('value' => '1','text' => '16:2', 'selected' => ( isset( $projects[0]['name']) && $projects[0]['aspect_ratio'] == 1  ? 1:'0')),
+								array('value' => '2','text' => '20:30', 'selected' => ( isset( $projects[0]['name']) && $projects[0]['aspect_ratio'] == 2  ? 1:'0'))
 						)
 				)
 			)
