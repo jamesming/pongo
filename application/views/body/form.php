@@ -153,7 +153,7 @@
 													                element: document.getElementById('<?php  echo $inputs['fileuploader_name']   ?>'),
 													                action: '<?php echo base_url();    ?>index.php/ajax/upload',
 													                onSubmit: function(id, fileName){
-													                	// alert('start');
+													                	$('#<?php  echo $inputs['fileuploader_name']   ?> div.qq-upload-button').html('<i class="icon-refresh"></i> Uploading')
 													                },
 													                params: {
 																			        asset_id: <?php echo $inputs['asset_id']    ?>,
@@ -161,10 +161,9 @@
 																			        project_id:<?php echo $inputs['project_id']    ?>,
 																			        category_id:<?php echo $inputs['category_id']    ?>
 																			    },
-																			    // ex. ['jpg', 'jpeg', 'png', 'gif'] or []
 																					allowedExtensions: ['<?php echo $inputs['allowable extensions']    ?>'],
 													                onComplete: function(id, fileName, responseJSON){
-													                	// alert(JSON.stringify(responseJSON));
+													                	$('#<?php  echo $inputs['fileuploader_name']   ?> div.qq-upload-button').html('<i class="icon-upload"></i> Upload')
 													                	
 													                	<?php if( $inputs['asset_type_id'] == 1){?>
 													                		
@@ -201,16 +200,7 @@
 															background-repeat:'no-repeat';
 															background-size:'cover';	
 															vertical-align:middle;
-									      			'  >
-										      			<div   class='rounded transparent '  style='
-										      					border:1px solid #CCCCCC;
-										      					width:60px;
-										      					height:60px;
-										      					'  >
-										      				<img src='<?php   echo base_url()  ?>images/ajax-loading.gif'/>
-										      			</div>
-									      			
-									      			</div>
+									      			'  ></div>
 									      	</div>							      
 							     
 							     	<?php } ?>
