@@ -139,7 +139,7 @@
 							
 							        <div class="controls">
 							
-												<div id="<?php  echo $inputs['fileuploader_name']   ?>"   class='btn float_right'    />	</div>
+												<div id="<?php  echo $inputs['fileuploader_name']   ?>"   class='btn float_right' asset_id='<?php echo $inputs['asset_id']    ?>'   />	</div>
 													<!-- STYLE ICON IN BUTTON USING js/fileuploader.js line 511  -->
 							        </div>
 							
@@ -158,19 +158,21 @@
 													                params: {
 																			        asset_id: <?php echo $inputs['asset_id']    ?>,
 																			        asset_type_id: <?php echo $inputs['asset_type_id']    ?>,
-																			        project_id:<?php echo $inputs['project_id']    ?>
+																			        project_id:<?php echo $inputs['project_id']    ?>,
+																			        category_id:<?php echo $inputs['category_id']    ?>
 																			    },
 																			    // ex. ['jpg', 'jpeg', 'png', 'gif'] or []
 																					allowedExtensions: ['<?php echo $inputs['allowable extensions']    ?>'],
 													                onComplete: function(id, fileName, responseJSON){
-													                	
-													                	// alert('done');
+													                	// alert(JSON.stringify(responseJSON));
 													                	
 													                	<?php if( $inputs['asset_type_id'] == 1){?>
 													                		
 												                			$('#iframe_dom').attr('src','<?php echo base_url()    ?>index.php/ajax/resize?asset_id='  + responseJSON['asset_id'] +  '&asset_type_id=' + responseJSON['asset_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 												                			
 												                		<?php } ?>
+												                		
+												                		
 													                	
 													                },
 													                debug: true,
@@ -194,7 +196,7 @@
 									      			width:<?php echo $inputs['thumbnailbox-size']['width']    ?>;
 									      			height:<?php echo $inputs['thumbnailbox-size']['height']    ?>;
 									      			margin:0 auto;
-															background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $inputs['asset_id']   ?>/image_thumb.jpg?random=<?php echo rand(345345,32452345)    ?>);
+															background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $inputs['asset_id']   ?>/asset_thumb.jpg?random=<?php echo rand(345345,32452345)    ?>);
 															background-position:'center center';
 															background-repeat:'no-repeat';
 															background-size:'cover';	
@@ -285,7 +287,7 @@
 													/* MODIFY RIGHT PANEL WITH NEW EDITS */
 
 															window.parent.$('.thumbnail div.selected').css({
-																'background-image': 'url(<?php  echo base_url()   ?>uploads/' + $('#thumbnail').attr('asset_id') + '/image_thumb.jpg?random=<?php echo  rand(3452345,345345)   ?>)',
+																'background-image': 'url(<?php  echo base_url()   ?>uploads/' + $('#thumbnail').attr('asset_id') + '/asset_thumb.jpg?random=<?php echo  rand(3452345,345345)   ?>)',
 																'background-position':'center center',
 																'background-repeat':'no-repeat',
 																'background-size':'cover',	
