@@ -282,7 +282,7 @@
 																
 																	var clone = window.parent.$('.thumbnail div.selected').parent().parent().clone();
 																	
-																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'}).text('NEW ONE')
+																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'}).html('<br /><br />Add <?php echo $data['legend']   ?>')
 																	
 																	/*  FANCYZOOM NEW LEFT LISTING */
 																	clone.css({cursor:'pointer'}).fancyZoom().click(function(event) {

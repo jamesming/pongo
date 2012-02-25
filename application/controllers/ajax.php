@@ -77,7 +77,7 @@ class Ajax extends CI_Controller {
 											  	
 											  	class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
 											    <div   class="thumbnail">
-											    	<div  style='text-align:center;border:1px solid gray;height:120px'  >NEW ONE
+											    	<div  style='text-align:center;border:1px solid gray;height:120px'  ><br /><br />Add <?php echo $legend    ?>
 														</div>
 											    </div>
 											  </li>			 
