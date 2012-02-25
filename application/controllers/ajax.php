@@ -34,6 +34,7 @@ class Ajax extends CI_Controller {
 		$projects = $this->query->get_projects_with_or_without_assets( $category_id );
 
 		?>
+
 											<ul class="thumbnails ">
 												
 												<?php 
@@ -63,7 +64,18 @@ class Ajax extends CI_Controller {
 
 												 } ?>
 	
-											  <li class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
+											  <li 
+											  	<?php if( count($projects) == 0 ){?>
+											  	
+											  			first_in_category=1
+											  	
+											  	<?php }else{?>
+											  	
+											  			first_in_category=0
+											  	
+											  	<?php } ?>
+											  	
+											  	class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
 											    <div   class="thumbnail">
 											    	<div  style='text-align:center;border:1px solid gray;height:120px'  >NEW ONE
 														</div>

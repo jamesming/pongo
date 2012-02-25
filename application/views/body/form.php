@@ -249,8 +249,14 @@
 																			  	
 																			  });	
 																			  
-																		/* MAKE LISTING COLLASPABLE*/
-																		window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').attr('href','#collapse'+$('#category_id').val()).click();
+																		/* MAKE LISTING COLLASPABLE */
+																		window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').attr('href','#collapse'+$('#category_id').val())
+																		
+																		/*  OPEN IT ACCORDIAN IF THIS IS FIRST IN CATEGORY */
+																		<?php if( $data['first_in_category'] == 1){?>
+																			window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').click();
+																		<?php } ?>
+
 			
 															}else{
 																

@@ -170,7 +170,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 					<div  id='close_fancy_zoom'>
 					</div>
 			    <div  id='left-side-div' class="container">
-			    	<h1  id='work-label'>Work  <a  id='test' class='btn'   href='#jcrop_fancyZoom_div'  >launch</a></h1>
+			    	<h1  id='work-label'>Work  <a  id='test' class='btn'   href='#jcrop_fancyZoom_div'    style='display:none'   >launch</a></h1>
 				    <div class="row">
 					    <div class="span2">
 					    	
@@ -318,14 +318,14 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						$('.theList').click(function(event) {
 							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
 								
-								/*  FANCYZOOM RIGHT PANEL */
+								/*  FANCYZOOM THE RIGHT PANEL */
 							  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
 							  	
 							  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
 							  	
 							  	$(this).children('.thumbnail').children().addClass('selected');
 
-							  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
+							  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend')   + '&first_in_category=' + $(this).attr('first_in_category') )
 							  	
 							  });	
 							});
@@ -339,7 +339,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						
 						//.fancyZoom();
 						
-						/*  FANCYZOOM LEFT PANEL */
+						/*  FANCYZOOM THE LEFT PANEL */
 					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
 					  	
 					  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');

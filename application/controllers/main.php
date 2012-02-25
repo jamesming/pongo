@@ -27,7 +27,7 @@ class Main extends CI_Controller {
 			'categories' => $categories
 		);
 
-		// echo '<pre>';print_r(  $categories  );echo '</pre>';  exit;
+		//echo '<pre>';print_r(  $categories  );echo '</pre>';  exit;
 
 		$this->load->view('main/home_view',
 					array('data' => $data));	    
@@ -35,6 +35,7 @@ class Main extends CI_Controller {
 
 	
 	public function add_asset(){
+
 
 		if( $this->input->get('project_id') == -1 ){
 			
@@ -83,7 +84,8 @@ class Main extends CI_Controller {
 	
 		$data = array(
 			'input_array' =>  $input_array,
-			'legend' =>   $this->input->get('legend')
+			'legend' =>   $this->input->get('legend'),
+			'first_in_category' => $this->input->get('first_in_category')
 		);
 		
 		$this->load->view('main/add_asset_view',
