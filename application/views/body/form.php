@@ -249,17 +249,15 @@
 															if( $('#new').val() == 1){
 																
 																		/* NEW LISTING */
-																		var accordion_inner_listing_li = "<li 	 class='fancyZoom '  new='0'  href='#fancyZoom_div'  category_id='" + $('#category_id').val() +  "'  legend='<?php echo $data['legend']   ?>' project_id='-1' >" + $('#name').val() +  "</li>";
+																		var accordion_inner_listing_li = "<li 	 class='fancyZoom '  new='0'  href='#fancyZoom_div'  category_id='" + $('#category_id').val() +  "'  legend='<?php echo $data['legend']   ?>' project_id='<?php echo $data['input_array']['primary_key']    ?>' >" + $('#name').val() +  "</li>";
 																		
 																		window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
 																		
-																				/*  FANCYZOOM NEW LEFT LISTING */
+																				/*  FANCYZOOM THE NEW LEFT LISTING */
 																				window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').css({cursor:'pointer'}).fancyZoom().click(function(event) {
-										  	
-																			  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
-																			  	
-																			  	$(this).children('.thumbnail').children().addClass('selected');
-														
+																					
+																					$(this).css({background:'red'});
+						
 																			  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
 																			  	
 																			  });	
@@ -299,7 +297,7 @@
 																	
 																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'}).html('<br /><br />Add <?php echo $data['legend']   ?>')
 																	
-																	/*  FANCYZOOM NEW LEFT LISTING */
+																	/*  FANCYZOOM RIGHT LEFT LISTING */
 																	clone.css({cursor:'pointer'}).fancyZoom().click(function(event) {
 							  	
 																  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
@@ -322,6 +320,7 @@
 								
           			
           	});
+h
           </script>
 
         </fieldset>

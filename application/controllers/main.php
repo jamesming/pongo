@@ -35,6 +35,8 @@ class Main extends CI_Controller {
 
 	
 	public function add_asset(){
+		
+		//echo '<pre>';print_r(  $this->input->get('project_id')  );echo '</pre>';  exit;
 
 		if( $this->input->get('project_id') == -1 ){
 			
