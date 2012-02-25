@@ -158,7 +158,7 @@
 																			        project_id:<?php echo $inputs['project_id']    ?>
 																			    },
 																			    // ex. ['jpg', 'jpeg', 'png', 'gif'] or []
-																					allowedExtensions: ['jpg'],
+																					allowedExtensions: ['<?php echo $inputs['allowable extensions']    ?>'],
 													                onComplete: function(id, fileName, responseJSON){
 													                	
 													                	<?php if( $inputs['asset_type_id'] == 1){?>
