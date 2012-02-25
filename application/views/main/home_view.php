@@ -170,7 +170,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 					<div  id='close_fancy_zoom'>
 					</div>
 			    <div  id='left-side-div' class="container">
-			    	<h1  id='work-label'>Work  <a  id='test' class='btn'   href='#jcrop_fancyZoom_div'    >launch</a></h1>
+			    	<h1  id='work-label'>Work  <a  id='test' class='btn'   href='#jcrop_fancyZoom_div'   style='display:none'     >launch</a></h1>
 				    <div class="row">
 					    <div class="span2">
 					    	
