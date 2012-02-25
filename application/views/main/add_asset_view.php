@@ -7,6 +7,7 @@
 
 
     <link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
+    <?php $this->load->view('header/generic_css.php');    ?>
 
 		<?php $this->load->view('header/generic_css.php');    ?>
 

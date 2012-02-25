@@ -198,7 +198,17 @@
 															background-position:'center center';
 															background-repeat:'no-repeat';
 															background-size:'cover';	
-									      			'  ></div>
+															vertical-align:middle;
+									      			'  >
+										      			<div   class='rounded transparent '  style='
+										      					border:1px solid #CCCCCC;
+										      					width:60px;
+										      					height:60px;
+										      					'  >
+										      				<img src='<?php   echo base_url()  ?>images/ajax-loading.gif'/>
+										      			</div>
+									      			
+									      			</div>
 									      	</div>							      
 							     
 							     	<?php } ?>

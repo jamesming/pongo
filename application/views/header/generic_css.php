@@ -35,6 +35,18 @@
 				  -moz-box-shadow: 0 0 6px #dbc59e;
 				  box-shadow: 0 0 6px #dbc59e;	
 				}
-				
-
+	.transparent{
+			/* Fallback for web browsers that don't support RGBa */
+			background-color: rgb(0, 0, 0);
+			/* RGBa with 0.6 opacity */
+			background-color: rgba(0, 0, 0, 0.3);
+			<?php if( $this->tools->browserIsExplorer() ){?>
+				background: transparent; 
+			<?php } ?>
+			<?php     
+			/*
+			http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/ 
+			*/
+			?>
+		}
     </style>
