@@ -153,7 +153,7 @@
 													                element: document.getElementById('<?php  echo $inputs['fileuploader_name']   ?>'),
 													                action: '<?php echo base_url();    ?>index.php/ajax/upload',
 													                onSubmit: function(id, fileName){
-													                	alert('start');
+													                	// alert('start');
 													                },
 													                params: {
 																			        asset_id: <?php echo $inputs['asset_id']    ?>,
@@ -164,7 +164,7 @@
 																					allowedExtensions: ['<?php echo $inputs['allowable extensions']    ?>'],
 													                onComplete: function(id, fileName, responseJSON){
 													                	
-													                	alert('done');
+													                	// alert('done');
 													                	
 													                	<?php if( $inputs['asset_type_id'] == 1){?>
 													                		
@@ -249,7 +249,7 @@
 															if( $('#new').val() == 1){
 																
 																		/* NEW LISTING */
-																		var accordion_inner_listing_li = "<li 	 class='fancyZoom '  new='0'  href='#fancyZoom_div'  category_id='" + $('#category_id').val() +  "'  legend='<?php echo $data['legend']   ?>' project_id='<?php echo $data['input_array']['primary_key']    ?>' >" + $('#name').val() +  "</li>";
+																		var accordion_inner_listing_li = "<li 	 class='fancyZoom '  new='0'  href='#fancyZoom_div'  category_id='" + $('#category_id').val() +  "'  legend='<?php echo $data['legend']   ?>' project_id='-1' >" + $('#name').val() +  "</li>";
 																		
 																		window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
 																		

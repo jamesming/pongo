@@ -36,7 +36,6 @@ class Main extends CI_Controller {
 	
 	public function add_asset(){
 
-
 		if( $this->input->get('project_id') == -1 ){
 			
 			$project_id = $this->my_database_model->insert_table( $table = 'projects', $insert_what = array() );
