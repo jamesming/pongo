@@ -243,6 +243,7 @@
 												set_what:$('#form0').serialize()
 												},function(data) {
 													
+													iframe_fancy_zoom = window.parent.$('#iframe_fancyZoom_div');
 													
 													/* MODIFY LEFT PANEL WITH NEW EDITS */
 													
@@ -253,10 +254,12 @@
 																		
 																		window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
 																		
+																		
+																		
 																				/*  FANCYZOOM THE NEW LEFT LISTING */
 																				window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').css({cursor:'pointer'}).fancyZoom().click(function(event) {
 																					
-																					$(this).css({background:'red'});
+																					iframe_fancy_zoom.attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
 						
 																			  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
 																			  	
@@ -304,7 +307,7 @@
 																  	
 																  	$(this).children('.thumbnail').children().addClass('selected');
 									
-																  	window.parent.$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
+																  	iframe_fancy_zoom.$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
 																  	
 																  });	
 																	
@@ -320,7 +323,7 @@
 								
           			
           	});
-h
+
           </script>
 
         </fieldset>

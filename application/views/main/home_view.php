@@ -229,11 +229,6 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									                  			
 									                  	} ?>
 									                  	
-									                  	
-																			<li 	 class="fancyZoom "  new='0'  href='#fancyZoom_div'  category_id='<?php echo $category['id']    ?>'  legend='<?php echo $category['name']    ?>' project_id='' >
-																						New One
-																			</li>	
-									                  	
 									                  </ol>
 									                  
 									                </div>
@@ -301,6 +296,8 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 		<?php $this->load->view('footer/fancy_zoom.php');    ?>
 		
 		<script type="text/javascript" language="Javascript">
+			
+			
 			
 			$.fn.setFancyZoomWindowSize = function(width, height) {
 						$(this).css({width:width+'px',height:height+'px'})
