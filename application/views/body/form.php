@@ -152,6 +152,9 @@
 								      			            window.<?php  echo $inputs['fileuploader_name']   ?> = new qq.FileUploader({
 													                element: document.getElementById('<?php  echo $inputs['fileuploader_name']   ?>'),
 													                action: '<?php echo base_url();    ?>index.php/ajax/upload',
+													                onSubmit: function(id, fileName){
+													                	alert('start');
+													                },
 													                params: {
 																			        asset_id: <?php echo $inputs['asset_id']    ?>,
 																			        asset_type_id: <?php echo $inputs['asset_type_id']    ?>,
@@ -160,6 +163,8 @@
 																			    // ex. ['jpg', 'jpeg', 'png', 'gif'] or []
 																					allowedExtensions: ['<?php echo $inputs['allowable extensions']    ?>'],
 													                onComplete: function(id, fileName, responseJSON){
+													                	
+													                	alert('done');
 													                	
 													                	<?php if( $inputs['asset_type_id'] == 1){?>
 													                		
