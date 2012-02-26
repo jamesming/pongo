@@ -234,8 +234,7 @@
 												id:'<?php echo $data['input_array']['primary_key']    ?>',
 												set_what:$('#form0').serialize()
 												},function(data) {
-													
-													iframe_fancy_zoom = window.parent.$('#iframe_fancyZoom_div');
+
 													
 													/* MODIFY LEFT PANEL WITH NEW EDITS */
 													
@@ -246,17 +245,8 @@
 																		
 																		window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
 																		
-																		
-																		
-																				/*  FANCYZOOM THE NEW LEFT LISTING */
-																				window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').css({cursor:'pointer'}).fancyZoom().click(function(event) {
-																					
-																					iframe_fancy_zoom.attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
-						
-																			  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
-																			  	
-																			  });	
-																			  
+																		window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').attach_FancyZoom_AddAssetFormPopWindow();
+
 																		/* MAKE LISTING COLLASPABLE */
 																		window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').attr('href','#collapse'+$('#category_id').val())
 																		
@@ -292,14 +282,13 @@
 																	
 																	clone.attr('project_id', '-1').children('.thumbnail').children('div').css({background:'white'}).html('<br /><br />Add <?php echo $data['legend']   ?>')
 																	
-																	/*  FANCYZOOM RIGHT LEFT LISTING */
-																	clone.css({cursor:'pointer'}).fancyZoom().click(function(event) {
+																	/*  FANCYZOOM RIGHT LISTING */
+																	clone.css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
 							  	
 																  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
 																  	
 																  	$(this).children('.thumbnail').children().addClass('selected');
 									
-																  	iframe_fancy_zoom.$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
 																  	
 																  });	
 																	

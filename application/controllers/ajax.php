@@ -163,7 +163,7 @@ class Ajax extends CI_Controller {
 		$uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
 		$result = $uploader->handleUpload($upload_path . '/');
 		
-		sleep(3);
+		//sleep(3);
 
 		?>
 		{success:true,asset_id:'<?php echo $asset_id; ?>', asset_type_id:'<?php echo $asset_type_id; ?>'}

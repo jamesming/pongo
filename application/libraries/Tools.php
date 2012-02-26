@@ -214,10 +214,10 @@ function resize_this($full_path, $width, $height){
  * @return string 
  */
  
-function crop_and_name_it($new_name = 'cropped.png', $full_path, $dir_path, $width = 300, $height = 300, $x_axis = 0, $y_axis = 0){
+function crop_and_name_it($new_name = 'cropped.png', $original_file, $dir_path, $width = 300, $height = 300, $x_axis = 0, $y_axis = 0){
 
 					$config['image_library'] = 'gd2';
-					$config['source_image']	= $full_path;
+					$config['source_image']	= $dir_path .$original_file;
 					$config['new_image'] = $dir_path . $new_name;
 					$config['thumb_marker']	= '';
 					$config['maintain_ratio'] = FALSE;

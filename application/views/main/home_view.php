@@ -268,12 +268,6 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						</iframe>
 					</div>	
 
-					<div id="jcrop_fancyZoom_div"  style='display:none;'  >
-						
-						<iframe   id="iframe_jcrop_fancyZoom_div" scrolling="no"  frameborder="0" src=""  >
-						    <p>Your browser does not support iframes.</p>
-						</iframe>
-					</div>	
 
   </body>
 
@@ -310,9 +304,15 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						})
 			};
 	
-			$('#fancyZoom_div').setFancyZoomWindowSize(794, 460);
-			$('#jcrop_fancyZoom_div').setFancyZoomWindowSize( $(window).width()-100, $(window).height()-200  );
+			$('#fancyZoom_div').setFancyZoomWindowSize(794, 450);
 			
+			$.fn.attach_FancyZoom_AddAssetFormPopWindow = function() {
+				$(this).fancyZoom().css({cursor:'pointer'}).click(function(event) {
+					$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend')   + '&first_in_category=' + $(this).attr('first_in_category') )
+				});	
+				
+				return this;
+			};
 			
 			$(document).ready(function() {
 				
@@ -320,13 +320,11 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
 								
 								/*  FANCYZOOM THE RIGHT PANEL */
-							  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+							  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
 							  	
 							  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
 							  	
 							  	$(this).children('.thumbnail').children().addClass('selected');
-
-							  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend')   + '&first_in_category=' + $(this).attr('first_in_category') )
 							  	
 							  });	
 							});
@@ -365,10 +363,8 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						//.fancyZoom();
 						
 						/*  FANCYZOOM THE LEFT PANEL */
-					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
-
-					  	$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend') )
-					  	
+					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
+					  			
 					  });	
 					  
 			});
