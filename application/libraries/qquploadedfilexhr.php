@@ -107,6 +107,7 @@ class qqFileUploader {
      * Returns array('success'=>true) or array('error'=>'error message')
      */
     function handleUpload($uploadDirectory, $replaceOldFile = FALSE){
+    	
         if (!is_writable($uploadDirectory)){
             return array('error' => "Server error. Upload directory isn't writable.");
         }
@@ -145,7 +146,7 @@ class qqFileUploader {
         $filename = 'asset';
         
         if ( $this->file->save($uploadDirectory . $filename . '.' . $ext)){
-            return array('success'=>true);
+            return array('success'=>true, 'filename'=>$this->file->getName());
         } else {
             return array('error'=> 'Could not save uploaded file.' .
                 'The upload was cancelled, or server error encountered');

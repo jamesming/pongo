@@ -163,10 +163,18 @@ class Ajax extends CI_Controller {
 		$uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
 		$result = $uploader->handleUpload($upload_path . '/');
 		
+		$this->my_database_model->update_table_where(
+					$table = 'assets', 
+					$where_array = array('id' => $asset_id),
+					$set_what_array = array(
+						'name' => $result['filename']
+						)
+					);
+		
 		//sleep(3);
 
 		?>
-		{success:true,asset_id:'<?php echo $asset_id; ?>', asset_type_id:'<?php echo $asset_type_id; ?>'}
+		{success:true,asset_id:'<?php echo $asset_id; ?>', asset_type_id:'<?php echo $asset_type_id; ?>', filename:'<?php echo $result['filename']; ?>'}
 		<?php   	
 		
 /*	

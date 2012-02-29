@@ -163,11 +163,17 @@
 																			    },
 																					allowedExtensions: ['<?php echo $inputs['allowable extensions']    ?>'],
 													                onComplete: function(id, fileName, responseJSON){
+													                	//alert(JSON.stringify(responseJSON));
 													                	$('#<?php  echo $inputs['fileuploader_name']   ?> div.qq-upload-button').html('<i class="icon-upload"></i> Upload')
 													                	
 													                	<?php if( $inputs['asset_type_id'] == 1){?>
 													                		
 												                			$('#iframe_dom').attr('src','<?php echo base_url()    ?>index.php/ajax/resize?asset_id='  + responseJSON['asset_id'] +  '&asset_type_id=' + responseJSON['asset_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
+												                			
+												                		<?php }elseif($inputs['asset_type_id'] == 2){ ?>
+																							
+																							$('#video_filename').val(responseJSON['filename']);
+												                			
 												                			
 												                		<?php } ?>
 												                		
@@ -184,10 +190,6 @@
 
 							      <?php if(  $inputs['thumbnailbox']== 1){?>
 							      
-							      
-
-							      							      
-							      
 									      	<div  class='clearfix '   style='margin-bottom:20px'   >
 									      		<div  id='thumbnail' asset_id='<?php  echo $inputs['asset_id']   ?>' style='
 									      			border:1px solid #CCCCCC;
@@ -202,12 +204,30 @@
 															vertical-align:middle;
 									      			'  ></div>
 									      	</div>							      
-							     
-							     	<?php } ?>
+							 
+							     	<?php }elseif( $inputs['show_filename'] == 1 ){ ?>
+							     	
+							     	
+						          <div class="control-group">
+						
+						            <label class="control-label" >video</label>
+						
+						            <div class="controls">
+						
+						              <input id='video_filename' type="text" class="<?php echo $data['input_array']['size-class']    ?> "  value="<?php  echo $inputs['filename']   ?>">
+						
+						            </div>
+						
+						          </div>	
+							     	
+							     				
+							     	
+							     	<?php
+							     	}
 
 							      
 								
-							<?php
+							
          				};
          			 
          		}?>

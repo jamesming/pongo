@@ -168,7 +168,11 @@ class Query {
 		
 		$projects_raw = $this->CI->my_database_model->select_from_table( 
 			$table = 'projects', 
-			$select_what = 'asset_type_id ,assets.id as asset_id, projects.id as project_id, projects.*',    
+			$select_what = 'asset_type_id,
+											assets.id as asset_id, 
+											assets.name as asset_name, 
+											projects.id as project_id, 
+											projects.*',    
 			$where_array, 
 			$use_order = TRUE, 
 			$order_field = 'asset_type_id, assets.created', 
