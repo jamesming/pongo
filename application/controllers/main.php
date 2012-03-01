@@ -9,11 +9,11 @@ class Main extends CI_Controller {
 				
 				if(  isset( $this->session->userdata['user_id'] )  ){
 
-					$this->loggedIn = 0;
+					$this->loggedIn = 1;
 
 				}else{
 					
-					$this->loggedIn = 1;
+					$this->loggedIn = 0;
 					
 				}				
    }
