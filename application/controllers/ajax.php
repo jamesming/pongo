@@ -5,7 +5,16 @@ class Ajax extends CI_Controller {
 	
    public function __construct(){
         parent::__construct();
+        
+				if(  isset( $this->session->userdata['user_id'] )  ){
 
+					$this->loggedIn = 1;
+
+				}else{
+					
+					$this->loggedIn = 0;
+					
+				}
 			
    }
 
@@ -62,30 +71,53 @@ class Ajax extends CI_Controller {
 													};
 
 												 } ?>
+												 
+												 <?php if( $this->loggedIn == 0){?>
+												 
+																  <li 
+																  	<?php if( count($projects) == 0 ){?>
+																  	
+																  			first_in_category=1
+																  	
+																  	<?php }else{?>
+																  	
+																  			first_in_category=0
+																  	
+																  	<?php } ?>
+																  	
+																  	class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
+																    <div   class="thumbnail">
+																    	<div  style='text-align:center;border:1px solid gray;height:120px'  ><br /><br />Add <?php echo $legend    ?>
+																			</div>
+																    </div>
+																  </li>		
+												
+												 <?php } ?>
 	
-											  <li 
-											  	<?php if( count($projects) == 0 ){?>
-											  	
-											  			first_in_category=1
-											  	
-											  	<?php }else{?>
-											  	
-											  			first_in_category=0
-											  	
-											  	<?php } ?>
-											  	
-											  	class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
-											    <div   class="thumbnail">
-											    	<div  style='text-align:center;border:1px solid gray;height:120px'  ><br /><br />Add <?php echo $legend    ?>
-														</div>
-											    </div>
-											  </li>			 
+	 
 			    
 											</ul>
 		
 		<?php     
 		
 	}
+	
+	public function video(){
+		
+		$projects =   $this->query->get_projects_with_assets(
+				$where_array = array(
+					'projects.id' => $this->input->get('project_id')
+				)
+			);
+
+
+
+		$data = array('projects' => $projects);
+		
+		$this->load->view('main/video_view',
+					array('data' => $data));		
+		
+	}	
 
 
 	public function update(){

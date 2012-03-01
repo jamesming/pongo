@@ -6,7 +6,22 @@ class Main extends CI_Controller {
    public function __construct(){
         parent::__construct();
 
-			
+				if(  isset( $this->session->userdata['user_id'] )  ){
+
+					$this->loggedIn = 1;
+
+				}			
+				
+				
+				if(  isset( $this->session->userdata['user_id'] )  ){
+
+					$this->loggedIn = 1;
+
+				}else{
+					
+					$this->loggedIn = 0;
+					
+				}				
    }
 
 	/**
@@ -21,17 +36,41 @@ class Main extends CI_Controller {
 
 	public function index(){
 		
+		$this->home();
+    
+	}
+
+	public function home(){
+		
 		$categories = $this->query->get_categories_with_or_without_projects();
 		
 		$data = array(
+			'loggedIn' => $this->loggedIn,
 			'categories' => $categories
 		);
 
 		//echo '<pre>';print_r(  $categories  );echo '</pre>';  exit;
 
 		$this->load->view('main/home_view',
-					array('data' => $data));	    
+					array('data' => $data));			
+		
 	}
+
+
+	public function login(){
+		
+					$newdata = array('user_id' => 1 );						
+						
+					$this->session->set_userdata($newdata);
+		
+	}
+	
+	public function logout(){
+		
+		$this->session->sess_create();	
+		
+	}
+	
 
 	
 	public function add_asset(){

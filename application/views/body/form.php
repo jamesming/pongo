@@ -214,7 +214,7 @@
 						
 						            <div class="controls">
 						
-						              <input id='video_filename' type="text" class="<?php echo $data['input_array']['size-class']    ?> "  value="<?php  echo $inputs['filename']   ?>">
+						              <input id='video_filename' type="text" class="span2"  value="<?php  echo $inputs['filename']   ?>">
 						
 						            </div>
 						

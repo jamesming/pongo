@@ -315,18 +315,34 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			};
 			
 			$(document).ready(function() {
-				
+
 						$('.theList').click(function(event) {
 							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
 								
-								/*  FANCYZOOM THE RIGHT PANEL */
-							  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
-							  	
-							  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
-							  	
-							  	$(this).children('.thumbnail').children().addClass('selected');
-							  	
-							  });	
+								
+								<?php if( $data['loggedIn']  ){?>
+									
+										  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).click(function(event) {
+										  	
+										  	$('#right-panel').html('').append('<iframe border=\'0\' 		vspace=\'\'		hspace=\'0\'	scrolling=\'none\'	frameborder=\'0\' style=\'overflow:hidden;width:650px;height:700px\'  src=\'<?php  echo base_url()   ?>index.php/ajax/video?project_id=' + $(this).attr('project_id') +  '\'/>');
+
+
+										  });	
+									
+								<?php }else{?>
+									
+											/*  FANCYZOOM THE RIGHT PANEL */
+										  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
+										  	
+										  	$(this).parent().children('.fancyZoom').children('.thumbnail').children().removeClass('selected');
+										  	
+										  	$(this).children('.thumbnail').children().addClass('selected');
+										  	
+										  });		
+										
+								<?php } ?>
+								
+							  
 							});
 						});	
 						
@@ -363,9 +379,29 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						//.fancyZoom();
 						
 						/*  FANCYZOOM THE LEFT PANEL */
-					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
+					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'})
+					  
+					  
+								<?php if( !$data['loggedIn']  ){?>
+									
+											.attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
+												
+											});
+									
+								<?php }else{?>
+									
+										  .click(function(event) {
+										  	
+										  	$('#right-panel').html('').append('<iframe border=\'0\' 		vspace=\'\'		hspace=\'0\'	scrolling=\'none\'	frameborder=\'0\' style=\'overflow:hidden;width:650px;height:700px\'  src=\'<?php  echo base_url()   ?>index.php/ajax/video?project_id=' + $(this).attr('project_id') +  '\'/>');
+								
+										  });										
+									
+								<?php } ?>
+					  
+					  
+					  
 					  			
-					  });	
+					  	
 					  
 			});
 			
