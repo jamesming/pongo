@@ -55,6 +55,8 @@ class Main extends CI_Controller {
 
 	public function login(){
 		
+					$this->session->sess_create();
+		
 					$newdata = array('user_id' => 1 );						
 						
 					$this->session->set_userdata($newdata);
