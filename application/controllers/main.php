@@ -13,6 +13,8 @@ class Main extends CI_Controller {
 
 				}else{
 					
+					$this->session->sess_create();	
+					
 					$this->loggedIn = 0;
 					
 				}				
