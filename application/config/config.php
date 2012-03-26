@@ -1,6 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
+/* 
+*
+*   cd ~/gopongo.com/pongo;git pull origin master
+*
+*/
 
 /* 
 *
