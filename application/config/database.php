@@ -38,12 +38,20 @@
 | the active record class
 */
 
+
+
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = "localhost";
-$db['default']['username'] = "root";
-$db['default']['password'] = "ourlady";
+if( $_SERVER['HTTP_HOST'] == 'gopongo.com' ){
+	$db['default']['hostname'] = "mysql.gopongo.com";
+	$db['default']['username'] = "jamesming";	
+	$db['default']['password'] = "ourlady123";		
+}elseif( $_SERVER['HTTP_HOST'] == 'localhost' ){
+	$db['default']['username'] = "root";	
+	$db['default']['hostname'] = "localhost";
+	$db['default']['password'] = "ourlady";	
+}
 $db['default']['database'] = "pongo_db";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
