@@ -46,7 +46,7 @@
     <link rel="apple-touch-icon" sizes="72x72" href="<?php  echo base_url()   ?>bootstrap/ico/apple-touch-icon-72x72.png">
 
     <link rel="apple-touch-icon" sizes="114x114" href="<?php  echo base_url()   ?>bootstrap/ico/apple-touch-icon-114x114.png">
-
+    <script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
   </head>
 
 <style>
@@ -66,60 +66,32 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
               <div class="container" >
 
                 <a class="brand" href="#">Pongo</a>
+                
+                <script type="text/javascript" language="Javascript">
+                $(document).ready(function() { 
+                	$('#login').click(function(event) {
+                				document.location = '<?php  echo base_url()   ?>/index.php/main/login';
+                	});	
+                	$('#logout').click(function(event) {
+                				document.location = '<?php  echo base_url()   ?>/index.php/main/logout';
+                	});	                	
+                });
+                </script>
 
                 <ul class="nav  pull-right ">
 
-                  <li class="dropdown">
 
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-
-                    <ul class="dropdown-menu">
-
-                      <li><a href="#">Action</a></li>
-
-                      <li><a href="#">Another action</a></li>
-
-                      <li><a href="#">Something else here</a></li>
-
-                      <li class="divider"></li>
-
-                      <li><a href="#">Separated link</a></li>
-
-                    </ul>
-
-                  </li>
-
-                  <li class="dropdown">
-
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
-
-                    <ul class="dropdown-menu">
-
-                      <li><a href="#">Action</a></li>
-
-                      <li><a href="#">Another action</a></li>
-
-                      <li><a href="#">Something else here</a></li>
-
-                      <li class="divider"></li>
-
-                      <li><a href="#">Separated link</a></li>
-
-                    </ul>
-
-                  </li>
                   
 			            <li class="dropdown">
 			
-			              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown 3<b class="caret"></b></a>
+			              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account<b class="caret"></b></a>
 			
 			              <ul id="menu1" class="dropdown-menu">
 			
-			                <li><a href="#">Action</a></li>
+			                <li><a id='login'  href="#">Log in</a></li>
 			
-			                <li><a href="#">Another action</a></li>
+			                <li><a id='logout'  href="#">Logout</a></li>
 			
-			                <li><a href="#">Something else here</a></li>
 			
 			                <li class="divider"></li>
 			

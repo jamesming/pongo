@@ -44,6 +44,8 @@ if( $_SERVER['HTTP_HOST'] == 'jamesming.whsites.net' ){
 	$config['base_url']	= "http://jamesming.whsites.net/pongo";	
 }elseif( $_SERVER['HTTP_HOST'] == 'gopongo.com' ){
 	$config['base_url']	= "http://gopongo.com/pongo";
+}elseif( $_SERVER['HTTP_HOST'] == 'localhost' ){
+	$config['base_url']	= "http://localhost/pongo";
 };
 
 	
