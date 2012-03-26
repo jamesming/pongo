@@ -38,18 +38,8 @@ $subdomain = $urlParts[0];
 
 if( $_SERVER['HTTP_HOST'] == 'jamesming.whsites.net' ){
 	$config['base_url']	= "http://jamesming.whsites.net/pongo";	
-}elseif( $_SERVER['HTTP_HOST'] == '127.0.0.1' ){
-	$config['base_url']	= "http://127.0.0.1/pongo";
-}elseif( $_SERVER['HTTP_HOST'] == '192.168.1.104' ){
-	$config['base_url']	= "http://192.168.1.104/pongo";
-}elseif( $_SERVER['HTTP_HOST'] == '192.168.1.103' ){
-	$config['base_url']	= "http://192.168.1.103/pongo";
-}elseif( $_SERVER['HTTP_HOST'] == 'localhost' ){
-	$config['base_url']	= "http://localhost/pongo";
-}elseif( $_SERVER['HTTP_HOST'] == 'www.pongo.me' ){
-	$config['base_url']	= "http://www.pongo.me";
-}elseif( $_SERVER['HTTP_HOST'] == 'pongo.me' ){
-	$config['base_url']	= "http://pongo.me";
+}elseif( $_SERVER['HTTP_HOST'] == 'gopongo.com' ){
+	$config['base_url']	= "http://gopongo.com/pongo";
 };
 
 	
