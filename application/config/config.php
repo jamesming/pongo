@@ -1,5 +1,20 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+
+
+/* 
+*
+
+Dreamhost does host our website.
+To reach tech support, you need to go thru their website and request a call-back.
+Dreamhost.com
+Login:  laurie@gopongo.com, password – barham850
+Select the support tab
+Select Contact support and it will walk you thru it – and request a callback to your number. 
+My number is 323-428-7797, please call me anytime (or conference me if) if you have questions or problems.
+*  
+*
+*/
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

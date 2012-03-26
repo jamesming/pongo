@@ -9,6 +9,16 @@ class Test extends CI_Controller {
    }
 
 
+function index(){
+
+
+$this->load->view('test/index4_view');		
+
+
+
+}
+
+
 	function drag_crop(){
 ?>	
 
@@ -484,7 +494,7 @@ $(document).ready(function() {
 	}
 
 
-	public function index(){
+	public function index2(){
 		$select_what =  '*';
 		
 		$where_array = array('id !=' => 16);
