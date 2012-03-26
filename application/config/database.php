@@ -46,7 +46,7 @@ $active_record = TRUE;
 if( $_SERVER['HTTP_HOST'] == 'gopongo.com' ){
 	$db['default']['hostname'] = "mysql.gopongo.com";
 	$db['default']['username'] = "jamesming";	
-	$db['default']['password'] = "ourlady";		
+	$db['default']['password'] = "Ourlady123";		
 }elseif( $_SERVER['HTTP_HOST'] == 'localhost' ){
 	$db['default']['username'] = "root";	
 	$db['default']['hostname'] = "localhost";
