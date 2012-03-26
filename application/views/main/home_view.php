@@ -70,10 +70,10 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
                 <script type="text/javascript" language="Javascript">
                 $(document).ready(function() { 
                 	$('#login').click(function(event) {
-                				document.location = '<?php  echo base_url()   ?>/index.php/main/login';
+                				document.location = '<?php  echo base_url()   ?>index.php/main/login';
                 	});	
                 	$('#logout').click(function(event) {
-                				document.location = '<?php  echo base_url()   ?>/index.php/main/logout';
+                				document.location = '<?php  echo base_url()   ?>index.php/main/logout';
                 	});	                	
                 });
                 </script>
